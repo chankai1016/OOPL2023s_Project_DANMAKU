@@ -203,11 +203,10 @@ void CGameStateRun::show_image_by_phase() {
 			}
 		}
 		if (phase == 6 && sub_phase == 1) {
-			if (!ball.IsAnimationDone()) {
+			ball.ShowBitmap();
+			if (ball.GetSelectShowBitmap() == 0) {
 				ball.ToggleAnimation();
 			}
-			ball.ShowBitmap();
-
 		}
 	}
 }
