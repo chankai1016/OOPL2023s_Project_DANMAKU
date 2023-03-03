@@ -58,6 +58,7 @@ void CGameStateRun::OnInit()  								// Initial values and graphic settings of 
 
 	bee.LoadBitmapByString({ "resources/bee_1.bmp", "resources/bee_2.bmp" });
 	bee.SetTopLeft(462, 265);
+	bee.SetAnimation(2, false);
 
 	ball.LoadBitmapByString({ "resources/ball-3.bmp", "resources/ball-2.bmp", "resources/ball-1.bmp", "resources/ball-ok.bmp" });
 	ball.SetTopLeft(150, 430);
@@ -253,7 +254,7 @@ bool CGameStateRun::validate_phase_3() {
 }
 
 bool CGameStateRun::validate_phase_4() {
-	return bee.IsAnimation() && bee.GetFrameIndexOfBitmap() == 2;
+	return bee.IsAnimation() && bee.GetFrameIndexOfBitmap() == 1;
 }
 
 bool CGameStateRun::validate_phase_5() {
