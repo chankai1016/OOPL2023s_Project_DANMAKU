@@ -28,7 +28,7 @@ void CGameStateRun::OnBeginState()
 void CGameStateRun::OnMove()							// Move game elements
 {
 	if ((character.GetLeft() == chest_and_key.GetLeft()) && (character.GetTop() == chest_and_key.GetTop())) {
-		chest_and_key.UnshowBitmap();
+		chest_and_key.ToggleAnimation();
 	}
 }
 
