@@ -27,7 +27,7 @@ void CGameStateRun::OnBeginState()
 
 void CGameStateRun::OnMove()							// Move game elements
 {
-	if ((character.Left() == chest_and_key.Left()) && (character.Top() == chest_and_key.Top())) {
+	if ((phase == 3) && (character.Left() == chest_and_key.Left()) && (character.Top() == chest_and_key.Top())) {
 		chest_and_key.SelectShowBitmap(1);
 	}
 	if ((phase == 5) && (character.Left() > door[0].Left() - 10) && (character.Left() < door[0].Left() + 10) && (character.Top() == door[0].Top())) {
