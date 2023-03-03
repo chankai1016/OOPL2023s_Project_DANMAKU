@@ -30,6 +30,15 @@ void CGameStateRun::OnMove()							// Move game elements
 	if ((character.Left() == chest_and_key.Left()) && (character.Top() == chest_and_key.Top())) {
 		chest_and_key.SelectShowBitmap(1);
 	}
+	if ((character.Left() == 465) && (character.Top() == door[0].Top())) {
+		door[0].SelectShowBitmap(1);
+	}
+	if ((character.Left() == 360) && (character.Top() == door[1].Top())) {
+		door[1].SelectShowBitmap(1);
+	}
+	if ((character.Left() == 255) && (character.Top() == door[2].Top())) {
+		door[2].SelectShowBitmap(1);
+	}
 }
 
 void CGameStateRun::OnInit()  								// Initial values and graphic settings of the game.
@@ -124,7 +133,7 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 		}
 	}
 	if (nChar == VK_RIGHT) {
-		if ((character.Left() < 400) && (character.Top() == 265)) {
+		if ((character.Left() < 500) && (character.Top() == 265)) {
 			character.SetTopLeft(character.Left()+15, character.Top());
 		}
 	}
