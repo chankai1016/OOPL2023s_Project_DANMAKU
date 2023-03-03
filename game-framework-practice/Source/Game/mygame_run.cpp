@@ -27,8 +27,8 @@ void CGameStateRun::OnBeginState()
 
 void CGameStateRun::OnMove()							// Move game elements
 {
-	if ((character.GetLeft() == chest_and_key.GetLeft()) && (character.GetTop() == chest_and_key.GetTop())) {
-		chest_and_key.ToggleAnimation();
+	if ((character.Left() == chest_and_key.Left()) && (character.Top() == chest_and_key.Top())) {
+		chest_and_key.SelectShowBitmap(1);
 	}
 }
 
@@ -124,23 +124,23 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 		}
 	}
 	if (nChar == VK_RIGHT) {
-		if ((character.GetLeft() < 400) && (character.GetTop() == 265)) {
-			character.SetTopLeft(character.GetLeft()+15, character.GetTop());
+		if ((character.Left() < 400) && (character.Top() == 265)) {
+			character.SetTopLeft(character.Left()+15, character.Top());
 		}
 	}
 	if (nChar == VK_LEFT) {
-		if ((character.GetLeft() > 150) && (character.GetTop() == 265)) {
-			character.SetTopLeft(character.GetLeft()-15, character.GetTop());
+		if ((character.Left() > 150) && (character.Top() == 265)) {
+			character.SetTopLeft(character.Left()-15, character.Top());
 		}
 	}
 	if (nChar == VK_DOWN) {
-		if ((character.GetLeft() == 150) && (character.GetTop() < 430)) {
-			character.SetTopLeft(character.GetLeft(), character.GetTop()+15);
+		if ((character.Left() == 150) && (character.Top() < 430)) {
+			character.SetTopLeft(character.Left(), character.Top()+15);
 		}
 	}
 	if (nChar == VK_UP) {
-		if ((character.GetLeft() == 150) && (character.GetTop() > 265)) {
-			character.SetTopLeft(character.GetLeft(), character.GetTop()-15);
+		if ((character.Left() == 150) && (character.Top() > 265)) {
+			character.SetTopLeft(character.Left(), character.Top()-15);
 		}
 	}
 }
@@ -178,7 +178,7 @@ void CGameStateRun::OnShow()
 
 void CGameStateRun::show_image_by_phase() {
 	if (phase <= 6) {
-		background.SetFrameIndexOfBitmap((phase - 1) * 2 + (sub_phase - 1));
+		background.SelectShowBitmap((phase - 1) * 2 + (sub_phase - 1));
 		background.ShowBitmap();
 		character.ShowBitmap();
 		if (phase == 3 && sub_phase == 1) {
@@ -237,30 +237,30 @@ void CGameStateRun::show_text_by_phase() {
 }
 
 bool CGameStateRun::validate_phase_1() {
-	return character.GetImageFileName() == "resources/giraffe.bmp";
+	return character.GetImageFilename() == "resources/giraffe.bmp";
 }
 
 bool CGameStateRun::validate_phase_2() {
-	return character.GetTop() > 204 && character.GetTop() < 325 && character.GetLeft() > 339 && character.GetLeft() < 459;
+	return character.Top() > 204 && character.Top() < 325 && character.Left() > 339 && character.Left() < 459;
 }
 
 bool CGameStateRun::validate_phase_3() {
 	return (
-		character.GetTop() + character.GetHeight() >= chest_and_key.GetTop()
-		&& character.GetLeft() + character.GetWidth() >= chest_and_key.GetLeft()
-		&& chest_and_key.GetFrameIndexOfBitmap() == 1
+		character.Top() + character.Height() >= chest_and_key.Top()
+		&& character.Left() + character.Width() >= chest_and_key.Left()
+		&& chest_and_key.GetSelectShowBitmap() == 1
 		&& chest_and_key.GetFilterColor() == RGB(255, 255, 255)
-	);
+		);
 }
 
 bool CGameStateRun::validate_phase_4() {
-	return bee.IsAnimation() && bee.GetFrameIndexOfBitmap() == 1;
+	return bee.IsAnimation() && bee.GetMovingBitmapFrame() == 2;
 }
 
 bool CGameStateRun::validate_phase_5() {
 	bool check_all_door_is_open = true;
 	for (int i = 0; i < 3; i++) {
-		check_all_door_is_open &= (door[i].GetFrameIndexOfBitmap() == 1);
+		check_all_door_is_open &= (door[i].GetSelectShowBitmap() == 1);
 	}
 	return check_all_door_is_open;
 }
