@@ -71,6 +71,7 @@ void CGameStateRun::OnInit()  								// Initial values and graphic settings of 
 
 	ball.LoadBitmapByString({ "resources/ball-3.bmp", "resources/ball-2.bmp", "resources/ball-1.bmp", "resources/ball-ok.bmp" });
 	ball.SetTopLeft(150, 430);
+	ball.SetAnimation(100, true);
 
 	for (int i = 0; i < 3; i++) {
 		door[i].LoadBitmapByString({ "resources/door_close.bmp", "resources/door_open.bmp" }, RGB(255, 255, 255));
@@ -202,7 +203,11 @@ void CGameStateRun::show_image_by_phase() {
 			}
 		}
 		if (phase == 6 && sub_phase == 1) {
+			if (!ball.IsAnimationDone()) {
+				ball.ToggleAnimation();
+			}
 			ball.ShowBitmap();
+
 		}
 	}
 }
