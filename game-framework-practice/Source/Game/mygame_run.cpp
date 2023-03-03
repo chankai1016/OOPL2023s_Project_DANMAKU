@@ -30,13 +30,13 @@ void CGameStateRun::OnMove()							// Move game elements
 	if ((character.Left() == chest_and_key.Left()) && (character.Top() == chest_and_key.Top())) {
 		chest_and_key.SelectShowBitmap(1);
 	}
-	if ((character.Left() == 465) && (character.Top() == door[0].Top())) {
+	if ((phase == 5) && (character.Left() > door[0].Left() - 10) && (character.Left() < door[0].Left() + 10) && (character.Top() == door[0].Top())) {
 		door[0].SelectShowBitmap(1);
 	}
-	if ((character.Left() == 360) && (character.Top() == door[1].Top())) {
+	if ((phase == 5) && (character.Left() > door[1].Left() - 10) && (character.Left() < door[1].Left() + 10) && (character.Top() == door[1].Top())) {
 		door[1].SelectShowBitmap(1);
 	}
-	if ((character.Left() == 255) && (character.Top() == door[2].Top())) {
+	if ((phase == 5) && (character.Left() > door[2].Left() - 10) && (character.Left() < door[2].Left() + 10) && (character.Top() == door[2].Top())) {
 		door[2].SelectShowBitmap(1);
 	}
 }
