@@ -213,35 +213,41 @@ void CGameStateRun::show_image_by_phase() {
 
 void CGameStateRun::show_text_by_phase() {
 	CDC *pDC = CDDraw::GetBackCDC();
-//	CFont* fp;
+	CFont* fp;
 
-	// CTextDraw::ChangeFontLog(pDC, fp, 21, "?L?n??????", RGB(0, 0, 0), 800);
+	CTextDraw::ChangeFontLog(pDC, fp, 21, "Microsoft JhengHei", RGB(0, 0, 0), 800);
 
 	if (phase == 1 && sub_phase == 1) {
-		CTextDraw::Print(pDC, 237, 128, "Modify your main character!");
-		CTextDraw::Print(pDC, 55, 163, "Replace the grey squares with the giraffe.bmp image in resources!");
-		CTextDraw::Print(pDC, 373, 537, "Press the Enter key to verify");
+		CTextDraw::Print(pDC, 30, 100, "Modify your main character!");
+		CTextDraw::Print(pDC, 30, 134, "Replace the grey squares with the");
+		CTextDraw::Print(pDC, 30, 168, "giraffe.bmp image in resources!");
+		CTextDraw::Print(pDC, 220, 537, "Press the Enter key to verify.");
 	} else if (phase == 2 && sub_phase == 1) {
-		CTextDraw::Print(pDC, 26, 128, "Next stage: Let the giraffe be able to move up and down to this position!");
-		CTextDraw::Print(pDC, 373, 537, "Press the Enter key to verify");
+		CTextDraw::Print(pDC, 30, 134, "Next stage: Let the giraffe be able");
+		CTextDraw::Print(pDC, 30, 168, "to move up and down to this position!");
+		CTextDraw::Print(pDC, 220, 537, "Press the Enter key to verify.");
 	} else if (phase == 3 && sub_phase == 1) {
-		CTextDraw::Print(pDC, 205, 128, "Help you prepare a treasure chest");
-		CTextDraw::Print(pDC, 68, 162, "Design the program to make the giraffe touch the treasure chest and then disappear it!");
-		CTextDraw::Print(pDC, 68, 196, "Remember the treasure chest to go back, using RGB(255, 255, 255)");
-		CTextDraw::Print(pDC, 373, 537, "Press the Enter key to verify");
+		CTextDraw::Print(pDC, 30, 100, "Help you prepare a treasure chest.");
+		CTextDraw::Print(pDC, 30, 134, "Design the program to make the giraffe touch");
+		CTextDraw::Print(pDC, 30, 168, "the treasure chest and then disappear it!");
+		CTextDraw::Print(pDC, 30, 202, "Remember the treasure chest to go back, using RGB(255, 255, 255).");
+		CTextDraw::Print(pDC, 220, 537, "Press the Enter key to verify.");
 	} else if (phase == 4 && sub_phase == 1) {
-		CTextDraw::Print(pDC, 173, 128, "Help you prepare a bee buddy");
-		CTextDraw::Print(pDC, 89, 162, "Has helped it to do two frames of animation, so that it can move up and down");
-		CTextDraw::Print(pDC, 110, 196, "Write a program to give your bee best friend an animation!");
-		CTextDraw::Print(pDC, 373, 537, "Press the Enter key to verify");
+		CTextDraw::Print(pDC, 30, 100, "Help you prepare a bee buddy.");
+		CTextDraw::Print(pDC, 30, 134, "Has helped it to do two frames of animation,");
+		CTextDraw::Print(pDC, 30, 168, "so that it can move up and down.");
+		CTextDraw::Print(pDC, 30, 202, "Write a program to give your bee best friend an animation!");
+		CTextDraw::Print(pDC, 220, 537, "Press the Enter key to verify.");
 	} else if (phase == 5 && sub_phase == 1) {
-		CTextDraw::Print(pDC, 173, 128, "Help you prepare three doors");
-		CTextDraw::Print(pDC, 89, 162, "The design program allows the giraffe to touch the door after the door will open");
-		CTextDraw::Print(pDC, 373, 537, "Press the Enter key to verify");
+		CTextDraw::Print(pDC, 30, 100, "Help you prepare three doors.");
+		CTextDraw::Print(pDC, 30, 134, "The design program allows the giraffe to touch");
+		CTextDraw::Print(pDC, 30, 168, "the door after the door will open.");
+		CTextDraw::Print(pDC, 220, 537, "Press the Enter key to verify.");
 	} else if (phase == 6 && sub_phase == 1) {
-		CTextDraw::Print(pDC, 173, 128, "Help you prepare a ball that counts down");
-		CTextDraw::Print(pDC, 89, 162, "Design the program to let the ball count down, then stop the animation after");
-		CTextDraw::Print(pDC, 373, 537, "Press the Enter key to verify");
+		CTextDraw::Print(pDC, 30, 100, "Help you prepare a ball that counts down");
+		CTextDraw::Print(pDC, 30, 134, "Design the program to let the ball count down,");
+		CTextDraw::Print(pDC, 30, 168, "then stop the animation after.");
+		CTextDraw::Print(pDC, 220, 537, "Press the Enter key to verify.");
 	} else if (sub_phase == 2) {
 		CTextDraw::Print(pDC, 268, 128, "Done!");
 	}
