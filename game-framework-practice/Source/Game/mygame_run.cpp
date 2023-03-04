@@ -39,10 +39,6 @@ void CGameStateRun::OnMove()							// Move game elements
 	if ((phase == 5) && (character.Left() > door[2].Left() - 10) && (character.Left() < door[2].Left() + 10) && (character.Top() == door[2].Top())) {
 		door[2].SelectShowBitmap(1);
 	}
-	if (phase == 6) {
-		ball.ToggleAnimation();
-	}
-
 }
 
 void CGameStateRun::OnInit()  								// Initial values and graphic settings of the game.
@@ -231,26 +227,28 @@ void CGameStateRun::show_text_by_phase() {
 		CTextDraw::Print(pDC, 30, 168, "to move up and down to this position!");
 		CTextDraw::Print(pDC, 220, 537, "Press the Enter key to verify.");
 	} else if (phase == 3 && sub_phase == 1) {
-		CTextDraw::Print(pDC, 30, 100, "Help you prepare a treasure chest.");
-		CTextDraw::Print(pDC, 30, 134, "Design the program to make the giraffe touch");
-		CTextDraw::Print(pDC, 30, 168, "the treasure chest and then disappear it!");
-		CTextDraw::Print(pDC, 30, 202, "Remember the treasure chest to go back, using RGB(255, 255, 255).");
+		CTextDraw::Print(pDC, 15, 100, "Help you prepare a chest.");
+		CTextDraw::Print(pDC, 15, 134, "Design the program to make the giraffe touch");
+		CTextDraw::Print(pDC, 15, 168, "the treasure chest and then disappear it!");
+		CTextDraw::Print(pDC, 15, 202, "Remember to remove the background of the");
+		CTextDraw::Print(pDC, 15, 236, "chest, and use RGB(255, 255, 255).");
 		CTextDraw::Print(pDC, 220, 537, "Press the Enter key to verify.");
 	} else if (phase == 4 && sub_phase == 1) {
-		CTextDraw::Print(pDC, 30, 100, "Help you prepare a bee buddy.");
-		CTextDraw::Print(pDC, 30, 134, "Has helped it to do two frames of animation,");
-		CTextDraw::Print(pDC, 30, 168, "so that it can move up and down.");
-		CTextDraw::Print(pDC, 30, 202, "Write a program to give your bee best friend an animation!");
+		CTextDraw::Print(pDC, 15, 100, "Help you prepare a bee buddy.");
+		CTextDraw::Print(pDC, 15, 134, "Has helped it to do two frames of");
+		CTextDraw::Print(pDC, 15, 168, "animation, so that it can move up and down.");
+		CTextDraw::Print(pDC, 15, 202, "Write a program to give your bee");
+		CTextDraw::Print(pDC, 15, 236, "best friend an animation!");
 		CTextDraw::Print(pDC, 220, 537, "Press the Enter key to verify.");
 	} else if (phase == 5 && sub_phase == 1) {
 		CTextDraw::Print(pDC, 30, 100, "Help you prepare three doors.");
-		CTextDraw::Print(pDC, 30, 134, "The design program allows the giraffe to touch");
-		CTextDraw::Print(pDC, 30, 168, "the door after the door will open.");
+		CTextDraw::Print(pDC, 30, 134, "The design program allows the giraffe to");
+		CTextDraw::Print(pDC, 30, 168, "touch the door after the door will open.");
 		CTextDraw::Print(pDC, 220, 537, "Press the Enter key to verify.");
 	} else if (phase == 6 && sub_phase == 1) {
-		CTextDraw::Print(pDC, 30, 100, "Help you prepare a ball that counts down");
-		CTextDraw::Print(pDC, 30, 134, "Design the program to let the ball count down,");
-		CTextDraw::Print(pDC, 30, 168, "then stop the animation after.");
+		CTextDraw::Print(pDC, 30, 100, "Help you prepare a ball that counts down.");
+		CTextDraw::Print(pDC, 30, 134, "Design the program to let the ball count ");
+		CTextDraw::Print(pDC, 30, 168, "down, then stop the animation after.");
 		CTextDraw::Print(pDC, 220, 537, "Press the Enter key to verify.");
 	} else if (sub_phase == 2) {
 		CTextDraw::Print(pDC, 268, 128, "Done!");
