@@ -39,6 +39,10 @@ void CGameStateRun::OnMove()							// Move game elements
 	if ((phase == 5) && (character.Left() > door[2].Left() - 10) && (character.Left() < door[2].Left() + 10) && (character.Top() == door[2].Top())) {
 		door[2].SelectShowBitmap(1);
 	}
+	if (phase == 6) {
+		ball.ToggleAnimation();
+	}
+
 }
 
 void CGameStateRun::OnInit()  								// Initial values and graphic settings of the game.
@@ -134,7 +138,7 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 		}
 	}
 	if (nChar == VK_RIGHT) {
-		if ((character.Left() < 500) && (character.Top() == 265)) {
+		if ((character.Left() < 480) && (character.Top() == 265)) {
 			character.SetTopLeft(character.Left()+15, character.Top());
 		}
 	}
