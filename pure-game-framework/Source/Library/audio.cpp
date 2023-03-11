@@ -1,5 +1,5 @@
 /*
- * gamelib.cpp: 本檔案儲存支援遊戲相關的class的implementation
+ * gamelib.cpp: This file contains the implementation of the classes that support the game
  * Copyright (C) 2002-2012 Woei-Kae Chen <wkc@csie.ntut.edu.tw>
  *
  * This file is part of game, a free game development framework for windows.
@@ -67,8 +67,8 @@ namespace game_framework {
 
 /////////////////////////////////////////////////////////////////////////////
 // CAudio
-// 這個class提供音效(Wave及MIDI)
-// 要懂得怎麼呼叫(運用)其各種能力，但是可以不懂下列的程式是什麼意思
+// This class provides sound effects (Wave, MIDI)
+// It is necessary to understand how to call (use) its various functions, but it is not necessary to understand the meaning of the following program.
 // Note: The following memebers of CAudio are designed to be graceful so
 //    that the game does not break down, when NO audio device is ready.
 /////////////////////////////////////////////////////////////////////////////

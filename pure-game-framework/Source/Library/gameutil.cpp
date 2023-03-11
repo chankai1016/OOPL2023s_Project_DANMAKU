@@ -20,9 +20,9 @@
 namespace game_framework {
 
 	/////////////////////////////////////////////////////////////////////////////
-	// CMovingBitmap: Moving Bitmap class
-	// 這個 class 提供可以移動的圖形
-	// 要懂得怎麼呼叫(運用)其各種能力，但是可以不懂下列的程式是什麼意思
+	// CMovingBitmap: Moving bitmap class
+	// This class provides moving images
+	// How to call (use) its various functions is important, but you may not understand the meaning of the following program.
 	/////////////////////////////////////////////////////////////////////////////
 
 	CMovingBitmap::CMovingBitmap()
@@ -165,7 +165,7 @@ namespace game_framework {
 	}
 
 	void CMovingBitmap::SelectShowBitmap(int _select) {
-		GAME_ASSERT(_select < (int) SurfaceID.size(), "選擇圖片時索引出界");
+		GAME_ASSERT(_select < (int) SurfaceID.size(), "Index out of bounds when selecting pictures");
 		selector = _select;
 	}
 
@@ -200,9 +200,9 @@ namespace game_framework {
 	}
 
 	/////////////////////////////////////////////////////////////////////////////
-	// CTextDraw: The class provide the ability to draw the text.
-	// 這個 class 提供文字的呈現
-	// 要懂得怎麼呼叫(運用)其各種能力，但是可以不懂下列的程式是什麼意思
+	// CTextDraw: This class provides the ability to draw text.
+	// This class provides the function to draw text.
+	// How to call (use) its various functions is important, but you may not understand the meaning of the following program.
 	/////////////////////////////////////////////////////////////////////////////
 
 	void CTextDraw::Print(CDC *pDC, int x, int y, string str) {

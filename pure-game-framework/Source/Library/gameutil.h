@@ -1,5 +1,5 @@
 /*
- * gamelib.h: 本檔案儲遊戲相關的class的interface
+ * gamelib.h: This file contains the interfaces of game-related classes.
  * Copyright (C) 2002-2008 Woei-Kae Chen <wkc@csie.ntut.edu.tw>
  *
  * This file is part of game, a free game development framework for windows.
@@ -74,29 +74,29 @@ using namespace std;
 namespace game_framework {
 
 	/////////////////////////////////////////////////////////////////////////////
-	// 這個class提供動態(可以移動)的圖形
-	// 每個Public Interface的用法都要懂，Implementation可以不懂
+	// This class provides dynamic (movable) graphics
+	// Need to understand how to use each Public Interface, but do not understand Implementation.
 	/////////////////////////////////////////////////////////////////////////////
 
 	class CMovingBitmap {
 	public:
 		CMovingBitmap();
-		int   Height();						// 取得圖形的高度
-		int   Left();						// 取得圖形的左上角的 x 座標
+		int   Height();
+		int   Left();
 		void  SetAnimation(int delay, bool _once);
-		void  LoadBitmap(int, COLORREF = CLR_INVALID);		// 載入圖，指定圖的編號(resource)及透明色
-		void  LoadBitmap(char*, COLORREF = CLR_INVALID);	// 載入圖，指定圖的檔名及透明色
-		void  LoadBitmap(vector<char*>, COLORREF = CLR_INVALID);	// 載入圖，指定圖的檔名及透明色
-		void  LoadBitmapByString(vector<string>, COLORREF = CLR_INVALID);	// 載入圖，指定圖的檔名及透明色
+		void  LoadBitmap(int, COLORREF = CLR_INVALID);
+		void  LoadBitmap(char*, COLORREF = CLR_INVALID);
+		void  LoadBitmap(vector<char*>, COLORREF = CLR_INVALID);
+		void  LoadBitmapByString(vector<string>, COLORREF = CLR_INVALID);
 		void  UnshowBitmap();
-		void  SetTopLeft(int, int);			// 將圖的左上角座標移至 (x,y)
-		void  ShowBitmap();					// 將圖貼到螢幕
-		void  ShowBitmap(double factor);	// 將圖貼到螢幕 factor < 1時縮小，>1時放大。注意：需要VGA卡硬體的支援，否則會很慢
+		void  SetTopLeft(int, int);
+		void  ShowBitmap();
+		void  ShowBitmap(double factor);
 		void  SelectShowBitmap(int select);
 		int   GetSelectShowBitmap();
 		void  ToggleAnimation();
-		int   Top();						// 取得圖形的左上角的 y 座標
-		int   Width();						// 取得圖形的寬度
+		int   Top();
+		int   Width();
 		bool  IsAnimationDone();
 		int   GetMovingBitmapFrame();
 	protected:

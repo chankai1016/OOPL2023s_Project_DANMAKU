@@ -10,7 +10,7 @@
 using namespace game_framework;
 
 /////////////////////////////////////////////////////////////////////////////
-// 這個class為遊戲的結束狀態(Game Over)
+// This class is the end state (Game Over) of the game.
 /////////////////////////////////////////////////////////////////////////////
 
 CGameStateOver::CGameStateOver(CGame *g): CGameState(g)
@@ -29,16 +29,16 @@ void CGameStateOver::OnBeginState()
 void CGameStateOver::OnInit()
 {
 	//
-	// 當圖很多時，OnInit載入所有的圖要花很多時間。為避免玩遊戲的人
-	//     等的不耐煩，遊戲會出現「Loading ...」，顯示Loading的進度。
+	// If there are a lot of images, it will take time for OnInit to load them all.
+	// Show the user "Loading ..." on the game screen to indicate the loading progress. on the game screen to indicate loading progress.
 	//
-	ShowInitProgress(66, "Initialize...");	// 接個前一個狀態的進度，此處進度視為66%
+	ShowInitProgress(66, "Initialize...");	// Take the progress of the previous state, here progress is considered 66%.
 	//
-	// 開始載入資料
+	// Start reading data
 	//
-	Sleep(1000);				// 放慢，以便看清楚進度，實際遊戲請刪除此Sleep
+	Sleep(1000);				// Slow down to check progress and remove this Sleep in the actual game
 	//
-	// 最終進度為100%
+	// Final progress is 100%
 	//
 	ShowInitProgress(100, "OK!");
 
