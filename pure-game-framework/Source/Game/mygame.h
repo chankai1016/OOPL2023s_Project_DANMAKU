@@ -65,7 +65,10 @@ namespace game_framework {
 	protected:
 		void OnShow();									// Show game screen in this state.
 	private:
-		CMovingBitmap logo;								// csie logo
+		CMovingBitmap logo; // csie logo
+		void load_background();
+		void draw_text();
+		CMovingBitmap background;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
@@ -89,6 +92,32 @@ namespace game_framework {
 	protected:
 		void OnMove();									// Move game elements
 		void OnShow();									// Display the game screen in this state.
+	private:
+		int phase = 1;
+		int sub_phase = 1;
+
+		CMovingBitmap background;
+		CMovingBitmap character;
+		CMovingBitmap player_shot;
+		CMovingBitmap enemy_shot;
+
+		// 関数をここに定義
+
+		typedef struct {
+			int flag;       //フラグ
+			int cnt;        //カウンタ
+			int power;      //パワー
+			int point;      //ポイント
+			int score;      //スコア
+			int num;        //残機数
+			int mutekicnt;  //無敵状態とカウント
+			int shot_mode;  //ショットモード
+			int money;      //お金
+			int img;        //画像
+			int slow;       //スローかどうか
+			double x, y;     //座標
+		}ch_t;
+
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
@@ -106,6 +135,8 @@ namespace game_framework {
 		void OnShow();									// Show game screen in this state.
 	private:
 		int counter;	// Countdown counter
+		CMovingBitmap background;
+		void load_background();
 	};
 
 }

@@ -32,6 +32,11 @@ void CGameStateRun::OnMove()
 
 void CGameStateRun::OnInit()  								// Initial values and graphic settings of the game.
 {
+	background.LoadBitmapByString({
+		"Resources/back/0/back0.bmp"
+		});
+	background.SetTopLeft(0, 0);
+	background.ShowBitmap();
 	
 }
 

@@ -43,9 +43,17 @@ void CGameStateOver::OnInit()
 	ShowInitProgress(100, "OK!");
 
 	Sleep(1000);
+
+	load_background();
+
 }
 
 void CGameStateOver::OnShow()
 {
 
+}
+
+void CGameStateOver::load_background() {
+	background.LoadBitmapByString({ "Resources/back/0/back0.bmp" });
+	background.SetTopLeft(0, 0);
 }
