@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////////
-// 定義CGame及CGameState所使用的三個狀態常數
+// Defines three state constants used by CGame and CGameState.
 /////////////////////////////////////////////////////////////////////////////
 
 enum GAME_STATES {
@@ -18,8 +18,8 @@ enum GAME_STATES {
 using namespace std;
 
 /////////////////////////////////////////////////////////////////////////////
-// 回報程式錯誤用的macro
-// 備註：這裡使用macro以便保留檔案名稱及行號，利於debug。
+// Macro for reporting program errors
+// Note: Use a macro here to retain the file name and line number for debugging purposes.
 /////////////////////////////////////////////////////////////////////////////
 
 #define GAME_ASSERT(boolexp,str)											\
@@ -40,41 +40,41 @@ using namespace std;
 
 namespace game_framework {
 	/////////////////////////////////////////////////////////////////////////////
-	// 這個class提供時間、錯誤等控制
-	// 一般的遊戲並不需直接操作這個物件，因此可以不管這個class的使用方法
+	// This class controls time, errors, etc.
+	// In a typical game, there is no need to manipulate this object directly, so the use of this class can be ignored
 	/////////////////////////////////////////////////////////////////////////////
 
 	class CSpecialEffect {
 	public:
-		static void  SetCurrentTime();					// 儲存目前的時間至ctime
-		static DWORD GetEllipseTime();					// 讀取目前的時間 - ctime
-		static int   GetCurrentTimeCount();				// 讀取儲存ctime的次數
-		static void  Delay(DWORD ms);					// 延遲 x ms
-		static void  DelayFromSetCurrentTime(DWORD ms);	// 自ctime起算，延遲 x ms
+		static void  SetCurrentTime();
+		static DWORD GetEllipseTime();
+		static int   GetCurrentTimeCount();
+		static void  Delay(DWORD ms);
+		static void  DelayFromSetCurrentTime(DWORD ms);
 	private:
 		static DWORD ctime;
 		static int	 ctimeCount;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
-	// 這個class會建立DirectDraw物件，以提供其他class使用
-	// 一般的遊戲並不需直接操作這個物件，因此可以不管這個class的使用方法
+	// This class creates a DirectDraw object for use by other classes.
+	// In a normal game, there is no need to manipulate this object directly, so the use of this class can be ignored.
 	/////////////////////////////////////////////////////////////////////////////
 
 	class CDDraw {
 		friend class CMovingBitmap;
 	public:
 		~CDDraw();
-		static void  BltBackColor(DWORD);		// 將Back plain全部著上指定的顏色
-		static void  BltBackToPrimary();		// 將Back plain貼至Primary plain
-		static CDC*  GetBackCDC();				// 取得Back Plain的DC (device context)
-		static void  GetClientRect(CRect &r);	// 取得設定的解析度
-		static void  Init(int, int);			// Initialize direct draw
-		static void  ReleaseBackCDC();			// 放掉Back Plain的DC (device context)
-		static bool  SetFullScreen(bool);		// 設定為全螢幕模式/視窗模式
-		static bool  IsFullScreen();			// 回答是否為全螢幕模式/視窗模式
+		static void  BltBackColor(DWORD);
+		static void  BltBackToPrimary();
+		static CDC*  GetBackCDC();
+		static void  GetClientRect(CRect &r);
+		static void  Init(int, int);
+		static void  ReleaseBackCDC();
+		static bool  SetFullScreen(bool);
+		static bool  IsFullScreen();
 	private:
-		CDDraw();								// private constructor
+		CDDraw();
 		static void  BltBitmapToBack(unsigned SurfaceID, int x, int y);
 		static void  BltBitmapToBack(unsigned SurfaceID, int x, int y, double factor);
 		static void  BltBitmapToBitmap(unsigned SourceID, unsigned TargetID, int x, int y);
@@ -110,7 +110,7 @@ namespace game_framework {
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
-	// 宣告尚未定義的class
+	// Undefined class is declared
 	/////////////////////////////////////////////////////////////////////////////
 
 	class CGame;
@@ -119,74 +119,69 @@ namespace game_framework {
 	class CGameStateOver;
 
 	/////////////////////////////////////////////////////////////////////////////
-	// 這個class為遊戲的各種狀態之Base class(是一個abstract class)
-	// 每個Public Interface的用法都要懂，Implementation可以不懂
+	// This class is the base class for the various states of the game (it is an abstract class).
+	// You need to know how to use each Public Interface; you do not need to know Implementation.
 	/////////////////////////////////////////////////////////////////////////////
 
 	class CGameState {
 	public:
 		CGameState(CGame *g);
-		void OnDraw();			// Template Method
-		void OnCycle();			// Template Method
-		//
-		// virtual functions, 由繼承者提供implementation
-		//
-		virtual ~CGameState() {}								// virtual destructor
-		virtual void OnBeginState() {}							// 設定每次進入這個狀態時所需的初值
-		virtual void OnInit() {}								// 狀態的初值及圖形設定
-		virtual void OnKeyDown(UINT, UINT, UINT) {}				// 處理鍵盤Down的動作
-		virtual void OnKeyUp(UINT, UINT, UINT) {}				// 處理鍵盤Up的動作
-		virtual void OnLButtonDown(UINT nFlags, CPoint point) {}// 處理滑鼠的動作
-		virtual void OnLButtonUp(UINT nFlags, CPoint point) {}	// 處理滑鼠的動作
-		virtual void OnMouseMove(UINT nFlags, CPoint point) {}  // 處理滑鼠的動作 
-		virtual void OnRButtonDown(UINT nFlags, CPoint point) {}// 處理滑鼠的動作
-		virtual void OnRButtonUp(UINT nFlags, CPoint point) {}	// 處理滑鼠的動作
+		void OnDraw();
+		void OnCycle();
+
+		virtual ~CGameState() {}
+		virtual void OnBeginState() {}
+		virtual void OnInit() {}
+		virtual void OnKeyDown(UINT, UINT, UINT) {}
+		virtual void OnKeyUp(UINT, UINT, UINT) {}
+		virtual void OnLButtonDown(UINT nFlags, CPoint point) {}
+		virtual void OnLButtonUp(UINT nFlags, CPoint point) {}
+		virtual void OnMouseMove(UINT nFlags, CPoint point) {}
+		virtual void OnRButtonDown(UINT nFlags, CPoint point) {}
+		virtual void OnRButtonUp(UINT nFlags, CPoint point) {}
 	protected:
-		void GotoGameState(int state);							// 跳躍至指定的state
-		void ShowInitProgress(int percent, string message);						// 顯示初始化的進度
-		//
-		// virtual functions, 由繼承者提供implementation
-		//
-		virtual void OnMove() {}								// 移動這個狀態的遊戲元素
-		virtual void OnShow() = 0;								// 顯示這個狀態的遊戲畫面
+		void GotoGameState(int state);
+		void ShowInitProgress(int percent, string message);
+		virtual void OnMove() {}
+		virtual void OnShow() = 0;
 		CGame *game;
 		CMovingBitmap loadingBitmap;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
-	// 這個class是遊戲的核心，控制遊戲的進行
-	// 一般的遊戲並不需直接操作這個物件，因此可以不管這個class的使用方法
+	// This class is the core of the game and controls game play
+	// In a normal game, there is no need to manipulate this object directly, so the use of this class may be ignored
 	/////////////////////////////////////////////////////////////////////////////
 
 	class CGame {
 	public:
 		CGame();										// Constructor
 		~CGame();										// Destructor
-		bool IsRunning();								// 讀取遊戲是否正在進行中
-		void OnDraw();									// 對應CGameView的OnDraw()
-		void OnFilePause();								// 遊戲暫停
-		void OnInit();									// 遊戲繪圖及音效的初始化
-		void OnInitStates();							// 遊戲各狀態的初值及圖形設定
-		bool OnIdle();									// 遊戲的主迴圈
-		void OnKeyDown(UINT, UINT, UINT);				// 處理鍵盤Down的動作
-		void OnKeyUp(UINT, UINT, UINT);					// 處理鍵盤Up的動作
-		void OnKillFocus();								// 遊戲被迫暫停
-		void OnLButtonDown(UINT nFlags, CPoint point);	// 處理滑鼠的動作
-		void OnLButtonUp(UINT nFlags, CPoint point);	// 處理滑鼠的動作
-		void OnMouseMove(UINT nFlags, CPoint point);    // 處理滑鼠的動作 
-		void OnRButtonDown(UINT nFlags, CPoint point);	// 處理滑鼠的動作
-		void OnRButtonUp(UINT nFlags, CPoint point);	// 處理滑鼠的動作
-		void OnResume();								// 處理自「待命」還原的動作
-		void OnSetFocus();								// 處理Focus
-		void OnSuspend();								// 處理「待命」的動作
+		bool IsRunning();
+		void OnDraw();
+		void OnFilePause();
+		void OnInit();
+		void OnInitStates();
+		bool OnIdle();
+		void OnKeyDown(UINT, UINT, UINT);
+		void OnKeyUp(UINT, UINT, UINT);
+		void OnKillFocus();
+		void OnLButtonDown(UINT nFlags, CPoint point);
+		void OnLButtonUp(UINT nFlags, CPoint point);
+		void OnMouseMove(UINT nFlags, CPoint point);
+		void OnRButtonDown(UINT nFlags, CPoint point);
+		void OnRButtonUp(UINT nFlags, CPoint point);
+		void OnResume();
+		void OnSetFocus();
+		void OnSuspend();
 		void SetGameState(int);
 		static CGame *Instance();
 	private:
-		bool			running;			// 遊戲是否正在進行中(未被Pause)
-		bool            suspended;			// 遊戲是否被suspended
-		const int		NUM_GAME_STATES;	// 遊戲的狀態數(3個狀態)
-		CGameState		*gameState;			// pointer指向目前的遊戲狀態
-		CGameState		*gameStateTable[3];	// 遊戲狀態物件的pointer
-		static CGame	instance;			// 遊戲唯一的instance
+		bool			running;
+		bool            suspended;
+		const int		NUM_GAME_STATES;
+		CGameState		*gameState;
+		CGameState		*gameStateTable[3];
+		static CGame	instance;
 	};
 }

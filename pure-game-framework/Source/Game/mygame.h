@@ -1,5 +1,5 @@
 /*
- * mygame.h: ¥»ÀÉ®×Àx¹CÀ¸¥»¨­ªºclassªºinterface
+ * mygame.h: This file contains the interface to the game's own classes.
  * Copyright (C) 2002-2008 Woei-Kae Chen <wkc@csie.ntut.edu.tw>
  *
  * This file is part of game, a free game development framework for windows.
@@ -44,68 +44,99 @@ namespace game_framework {
 	// Constants
 	/////////////////////////////////////////////////////////////////////////////
 
-	enum AUDIO_ID {				// ©w¸q¦UºØ­µ®Äªº½s¸¹
+	enum AUDIO_ID {				// Define various sound effect numbers
 		AUDIO_DING,				// 0
 		AUDIO_LAKE,				// 1
 		AUDIO_NTUT				// 2
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
-	// ³o­Óclass¬°¹CÀ¸ªº¹CÀ¸¶}ÀYµe­±ª«¥ó
-	// ¨C­ÓMember functionªºImplementation³£­n§ËÀ´
+	// This class is the object of the opening screen of the game.
+	// It is necessary to understand the implementation of each Member function.
 	/////////////////////////////////////////////////////////////////////////////
 
 	class CGameStateInit : public CGameState {
 	public:
 		CGameStateInit(CGame *g);
-		void OnInit();  								// ¹CÀ¸ªºªì­È¤Î¹Ï§Î³]©w
-		void OnBeginState();							// ³]©w¨C¦¸­«ª±©Ò»İªºÅÜ¼Æ
-		void OnKeyUp(UINT, UINT, UINT); 				// ³B²zÁä½LUpªº°Ê§@
-		void OnLButtonDown(UINT nFlags, CPoint point);  // ³B²z·Æ¹«ªº°Ê§@
+		void OnInit();  								// Game defaults and graphics settings
+		void OnBeginState();							// Set the number of variables required for each playback
+		void OnKeyUp(UINT, UINT, UINT); 				// Process keyUp action
+		void OnLButtonDown(UINT nFlags, CPoint point);  // Handle mouse actions
 	protected:
-		void OnShow();									// Åã¥Ü³o­Óª¬ºAªº¹CÀ¸µe­±
+		void OnShow();									// Show game screen in this state.
 	private:
-		CMovingBitmap logo;								// csieªºlogo
+		CMovingBitmap logo; // csie logo
+		void load_background();
+		void draw_text();
+		CMovingBitmap background;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
-	// ³o­Óclass¬°¹CÀ¸ªº¹CÀ¸°õ¦æª«¥ó¡A¥D­nªº¹CÀ¸µ{¦¡³£¦b³o¸Ì
-	// ¨C­ÓMember functionªºImplementation³£­n§ËÀ´
+	// This class is the execution object of the game, and the main game is here
+	// Need to understand the implementation of each member function
 	/////////////////////////////////////////////////////////////////////////////
 
 	class CGameStateRun : public CGameState {
 	public:
 		CGameStateRun(CGame *g);
 		~CGameStateRun();
-		void OnBeginState();							// ³]©w¨C¦¸­«ª±©Ò»İªºÅÜ¼Æ
-		void OnInit();  								// ¹CÀ¸ªºªì­È¤Î¹Ï§Î³]©w
+		void OnBeginState();							// Set variables required for each replay
+		void OnInit();  								// Game defaults and graphics settings
 		void OnKeyDown(UINT, UINT, UINT);
 		void OnKeyUp(UINT, UINT, UINT);
-		void OnLButtonDown(UINT nFlags, CPoint point);  // ³B²z·Æ¹«ªº°Ê§@
-		void OnLButtonUp(UINT nFlags, CPoint point);	// ³B²z·Æ¹«ªº°Ê§@
-		void OnMouseMove(UINT nFlags, CPoint point);	// ³B²z·Æ¹«ªº°Ê§@ 
-		void OnRButtonDown(UINT nFlags, CPoint point);  // ³B²z·Æ¹«ªº°Ê§@
-		void OnRButtonUp(UINT nFlags, CPoint point);	// ³B²z·Æ¹«ªº°Ê§@
+		void OnLButtonDown(UINT nFlags, CPoint point);  // Handle mouse actions
+		void OnLButtonUp(UINT nFlags, CPoint point);	// Handle mouse actions
+		void OnMouseMove(UINT nFlags, CPoint point);	// Handle mouse actions
+		void OnRButtonDown(UINT nFlags, CPoint point);  // Handle mouse actions
+		void OnRButtonUp(UINT nFlags, CPoint point);	// Handle mouse actions
 	protected:
-		void OnMove();									// ²¾°Ê¹CÀ¸¤¸¯À
-		void OnShow();									// Åã¥Ü³o­Óª¬ºAªº¹CÀ¸µe­±
+		void OnMove();									// Move game elements
+		void OnShow();									// Display the game screen in this state.
+	private:
+		int phase = 1;
+		int sub_phase = 1;
+
+		CMovingBitmap background;
+		CMovingBitmap character;
+		CMovingBitmap player_shot;
+		CMovingBitmap enemy_shot;
+
+		// ŠÖ”‚ğ‚±‚±‚É’è‹`
+
+		typedef struct {
+			int flag;       //ƒtƒ‰ƒO
+			int cnt;        //ƒJƒEƒ“ƒ^
+			int power;      //ƒpƒ[
+			int point;      //ƒ|ƒCƒ“ƒg
+			int score;      //ƒXƒRƒA
+			int num;        //c‹@”
+			int mutekicnt;  //–³“Gó‘Ô‚ÆƒJƒEƒ“ƒg
+			int shot_mode;  //ƒVƒ‡ƒbƒgƒ‚[ƒh
+			int money;      //‚¨‹à
+			int img;        //‰æ‘œ
+			int slow;       //ƒXƒ[‚©‚Ç‚¤‚©
+			double x, y;     //À•W
+		}ch_t;
+
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
-	// ³o­Óclass¬°¹CÀ¸ªºµ²§ôª¬ºA(Game Over)
-	// ¨C­ÓMember functionªºImplementation³£­n§ËÀ´
+	// This class is in the Game Over state
+	// Need to understand the implementation of each member function
 	/////////////////////////////////////////////////////////////////////////////
 
 	class CGameStateOver : public CGameState {
 	public:
 		CGameStateOver(CGame *g);
-		void OnBeginState();							// ³]©w¨C¦¸­«ª±©Ò»İªºÅÜ¼Æ
+		void OnBeginState();							// Set variables required for each replay.
 		void OnInit();
 	protected:
-		void OnMove();									// ²¾°Ê¹CÀ¸¤¸¯À
-		void OnShow();									// Åã¥Ü³o­Óª¬ºAªº¹CÀ¸µe­±
+		void OnMove();									// Move game elements
+		void OnShow();									// Show game screen in this state.
 	private:
-		int counter;	// ­Ë¼Æ¤§­p¼Æ¾¹
+		int counter;	// Countdown counter
+		CMovingBitmap background;
+		void load_background();
 	};
 
 }
