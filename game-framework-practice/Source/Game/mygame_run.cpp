@@ -135,22 +135,22 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	}
 	if (nChar == VK_RIGHT) {
 		if ((character.Left() < 480) && (character.Top() == 265)) {
-			character.SetTopLeft(character.Left()+15, character.Top());
+			character.SetTopLeft(character.Left() + 5, character.Top());
 		}
 	}
 	if (nChar == VK_LEFT) {
 		if ((character.Left() > 150) && (character.Top() == 265)) {
-			character.SetTopLeft(character.Left()-15, character.Top());
+			character.SetTopLeft(character.Left()-5, character.Top());
 		}
 	}
 	if (nChar == VK_DOWN) {
 		if ((character.Left() == 150) && (character.Top() < 430)) {
-			character.SetTopLeft(character.Left(), character.Top()+15);
+			character.SetTopLeft(character.Left(), character.Top()+5);
 		}
 	}
 	if (nChar == VK_UP) {
 		if ((character.Left() == 150) && (character.Top() > 265)) {
-			character.SetTopLeft(character.Left(), character.Top()-15);
+			character.SetTopLeft(character.Left(), character.Top()-5);
 		}
 	}
 }
