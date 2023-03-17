@@ -10,7 +10,7 @@
 using namespace game_framework;
 
 /////////////////////////////////////////////////////////////////////////////
-// 這個class為遊戲的遊戲執行物件，主要的遊戲程式都在這裡
+// This class is the game execution object of the game, the main game program is here
 /////////////////////////////////////////////////////////////////////////////
 
 CGameStateRun::CGameStateRun(CGame *g) : CGameState(g)
@@ -25,12 +25,12 @@ void CGameStateRun::OnBeginState()
 {
 }
 
-void CGameStateRun::OnMove()							// 移動遊戲元素
+void CGameStateRun::OnMove()							// Mobile game elements
 {
 	
 }
 
-void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
+void CGameStateRun::OnInit()  								// The initial values and graphics settings of the game
 {
 	
 }
@@ -45,23 +45,23 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 	
 }
 
-void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
+void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // Handling Mouse Actions
 {
 }
 
-void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
+void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// Handling Mouse Actions
 {
 }
 
-void CGameStateRun::OnMouseMove(UINT nFlags, CPoint point)	// 處理滑鼠的動作
+void CGameStateRun::OnMouseMove(UINT nFlags, CPoint point)	// Handling Mouse Actions
 {
 }
 
-void CGameStateRun::OnRButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
+void CGameStateRun::OnRButtonDown(UINT nFlags, CPoint point)  // Handling Mouse Actions
 {
 }
 
-void CGameStateRun::OnRButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
+void CGameStateRun::OnRButtonUp(UINT nFlags, CPoint point)	// Handling Mouse Actions
 {
 }
 

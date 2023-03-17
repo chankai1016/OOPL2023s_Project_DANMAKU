@@ -9,7 +9,7 @@
 
 using namespace game_framework;
 /////////////////////////////////////////////////////////////////////////////
-// 這個class為遊戲的遊戲開頭畫面物件
+// This class is the game's opening screen object
 /////////////////////////////////////////////////////////////////////////////
 
 CGameStateInit::CGameStateInit(CGame *g) : CGameState(g)
@@ -19,16 +19,17 @@ CGameStateInit::CGameStateInit(CGame *g) : CGameState(g)
 void CGameStateInit::OnInit()
 {
 	//
-	// 當圖很多時，OnInit載入所有的圖要花很多時間。為避免玩遊戲的人
-	//     等的不耐煩，遊戲會出現「Loading ...」，顯示Loading的進度。
+	// When there are a lot of images, OnInit takes a lot of time to
+	// load all of them. To prevent people from waiting impatiently,
+	// the game will show "Loading ..." to show the progress of Loading.
 	//
-	ShowInitProgress(0, "Start Initialize...");	// 一開始的loading進度為0%
+	ShowInitProgress(0, "Start Initialize...");	// The loading progress at the beginning is 0%.
 	//
-	// 開始載入資料
+	// Start loading data
 	//
-	Sleep(1000);				// 放慢，以便看清楚進度，實際遊戲請刪除此Sleep
+	Sleep(1000);				// Slow down to see the progress clearly, the actual game please delete this Sleep
 	//
-	// 此OnInit動作會接到CGameStaterRun::OnInit()，所以進度還沒到100%
+	// This OnInit action will receive CGameStaterRun::OnInit(), so the progress is not yet 100%.
 	//
 }
 
@@ -43,7 +44,7 @@ void CGameStateInit::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 void CGameStateInit::OnLButtonDown(UINT nFlags, CPoint point)
 {
-	GotoGameState(GAME_STATE_RUN);		// 切換至GAME_STATE_RUN
+	GotoGameState(GAME_STATE_RUN);		// Switch to GAME_STATE_RUN
 }
 
 void CGameStateInit::OnShow()

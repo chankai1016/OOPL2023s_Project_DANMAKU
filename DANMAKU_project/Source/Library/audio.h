@@ -69,12 +69,14 @@
 using namespace std;
 
 /////////////////////////////////////////////////////////////////////////////
-// 這個class會建立DirectX Audio物件，以提供音效
-// 每個Public Interface的用法都要懂，Implementation可以不懂
-// 注意事項：音效檔案可以用WAVE檔(.wav)或MIDI檔(.mid)，數個音效檔案可以
-//           混合(同時)撥放，但是其中只能混合一個MIDI檔，兩個MIDI檔案不
-//           能同時撥放，如果同時撥放兩個MIDI檔的話，前一個MIDI檔會被停
-//           掉。
+// This class will create DirectX Audio objects to provide sound effects.
+// The usage of each Public Interface should be understood,
+// but Implementation can not understand.
+// Note: sound files can use WAVE files (.wav) or MIDI files (.mid),
+//       several sound files can be mixed (at the same time) play,
+//       but which can only mix a MIDI file, two MIDI files can not
+//       be played at the same time, if you play two MIDI files at
+//       the same time, the former MIDI file will be stopped.
 /////////////////////////////////////////////////////////////////////////////
 
 namespace game_framework {
@@ -82,15 +84,15 @@ namespace game_framework {
 class CAudio {
 public:
 	~CAudio();
-	void           Close();						// 關閉Direct Sound介面
-	static CAudio* Instance();					// 取得CAudio的Instance
-	bool           Load(unsigned, char *);		// 載入編號i的聲音，指定MIDI檔案
-	bool           Open();						// 開啟Direct Sound介面
-	void		   Pause();						// 暫停播放所有音效
-	void           Play(unsigned, bool=false);	// 開始撥放編號i的聲音，指定是否重覆撥放
-	void		   Resume();					// 復原暫停播放的音效
-	void           SetPowerResume();			// 電源恢復
-	void           Stop(unsigned);				// 停止撥放編號i的聲音
+	void           Close();						// Close the Direct Sound interface
+	static CAudio* Instance();					// Get the Instance of CAudio
+	bool           Load(unsigned, char *);		// Load the sound of number i, specify the MIDI file
+	bool           Open();						// Open the Direct Sound interface
+	void		   Pause();						// Pause all sound effects 
+	void           Play(unsigned, bool=false);	// Start playback of sound number i, specify whether to repeat playback
+	void		   Resume();					// Resume the paused sound
+	void           SetPowerResume();			// Resume power
+	void           Stop(unsigned);				// Stops playback of sound number i
 private:
 	class Info {
 	public:
@@ -104,7 +106,7 @@ private:
 	static void ExecuteMciCommand(char *); // 
 	void SendMciCommand(char *);	// 
 	CAudio();						// private constructor
-	static CAudio		audio;		// 自動destruct
+	static CAudio		audio;		// Auto destruct
 	map<int, Info>		info;
 	bool				isOpened;
     HANDLE				hThread;	// MCI command thread

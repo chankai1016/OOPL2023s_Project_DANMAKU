@@ -1,5 +1,5 @@
 /*
- * mygame.h: 本檔案儲遊戲本身的class的interface
+ * mygame.h: This file stores the interface of the class of the game itself.
  * Copyright (C) 2002-2008 Woei-Kae Chen <wkc@csie.ntut.edu.tw>
  *
  * This file is part of game, a free game development framework for windows.
@@ -44,68 +44,68 @@ namespace game_framework {
 	// Constants
 	/////////////////////////////////////////////////////////////////////////////
 
-	enum AUDIO_ID {				// 定義各種音效的編號
+	enum AUDIO_ID {				// Define the numbering of various sound effects
 		AUDIO_DING,				// 0
 		AUDIO_LAKE,				// 1
 		AUDIO_NTUT				// 2
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
-	// 這個class為遊戲的遊戲開頭畫面物件
-	// 每個Member function的Implementation都要弄懂
+	// This class is the game's opening screen object
+	// Each Member function's Implementation should be understood
 	/////////////////////////////////////////////////////////////////////////////
 
 	class CGameStateInit : public CGameState {
 	public:
 		CGameStateInit(CGame *g);
-		void OnInit();  								// 遊戲的初值及圖形設定
-		void OnBeginState();							// 設定每次重玩所需的變數
-		void OnKeyUp(UINT, UINT, UINT); 				// 處理鍵盤Up的動作
-		void OnLButtonDown(UINT nFlags, CPoint point);  // 處理滑鼠的動作
+		void OnInit();  								// Initial values and graphics settings for the game
+		void OnBeginState();							// Set the number of variables required for each replay
+		void OnKeyUp(UINT, UINT, UINT); 				// Set the number of variables required for each replay
+		void OnLButtonDown(UINT nFlags, CPoint point);  // Handling mouse movements
 	protected:
-		void OnShow();									// 顯示這個狀態的遊戲畫面
+		void OnShow();									// Show this state of the game screen
 	private:
-		CMovingBitmap logo;								// csie的logo
+		CMovingBitmap logo;								// csie logo
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
-	// 這個class為遊戲的遊戲執行物件，主要的遊戲程式都在這裡
-	// 每個Member function的Implementation都要弄懂
+	// This class is the game execution object of the game, the main game program is here
+	// Each Member function's implementation should be understood
 	/////////////////////////////////////////////////////////////////////////////
 
 	class CGameStateRun : public CGameState {
 	public:
 		CGameStateRun(CGame *g);
 		~CGameStateRun();
-		void OnBeginState();							// 設定每次重玩所需的變數
-		void OnInit();  								// 遊戲的初值及圖形設定
+		void OnBeginState();							// Set the number of variables required for each replay
+		void OnInit();  								// The initial values and graphics settings of the game
 		void OnKeyDown(UINT, UINT, UINT);
 		void OnKeyUp(UINT, UINT, UINT);
-		void OnLButtonDown(UINT nFlags, CPoint point);  // 處理滑鼠的動作
-		void OnLButtonUp(UINT nFlags, CPoint point);	// 處理滑鼠的動作
-		void OnMouseMove(UINT nFlags, CPoint point);	// 處理滑鼠的動作 
-		void OnRButtonDown(UINT nFlags, CPoint point);  // 處理滑鼠的動作
-		void OnRButtonUp(UINT nFlags, CPoint point);	// 處理滑鼠的動作
+		void OnLButtonDown(UINT nFlags, CPoint point);  // Handling Mouse Actions
+		void OnLButtonUp(UINT nFlags, CPoint point);	// Handling Mouse Actions
+		void OnMouseMove(UINT nFlags, CPoint point);	// Handling Mouse Actions 
+		void OnRButtonDown(UINT nFlags, CPoint point);  // Handling Mouse Actions
+		void OnRButtonUp(UINT nFlags, CPoint point);	// Handling Mouse Actions
 	protected:
-		void OnMove();									// 移動遊戲元素
-		void OnShow();									// 顯示這個狀態的遊戲畫面
+		void OnMove();									// Mobile game elements
+		void OnShow();									// Show this state of the game screen
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
-	// 這個class為遊戲的結束狀態(Game Over)
-	// 每個Member function的Implementation都要弄懂
+	// This class is the end state of the game (Game Over)
+	// Each Member function's Implementation should be understood
 	/////////////////////////////////////////////////////////////////////////////
 
 	class CGameStateOver : public CGameState {
 	public:
 		CGameStateOver(CGame *g);
-		void OnBeginState();							// 設定每次重玩所需的變數
+		void OnBeginState();							// Set the number of variables required for each replay
 		void OnInit();
 	protected:
-		void OnMove();									// 移動遊戲元素
-		void OnShow();									// 顯示這個狀態的遊戲畫面
+		void OnMove();									// Mobile game elements
+		void OnShow();									// Show this state of the game screen
 	private:
-		int counter;	// 倒數之計數器
+		int counter;	// Countdown counter
 	};
 
 }

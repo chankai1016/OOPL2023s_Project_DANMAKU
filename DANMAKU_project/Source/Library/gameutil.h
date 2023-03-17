@@ -1,5 +1,5 @@
 /*
- * gamelib.h: 本檔案儲遊戲相關的class的interface
+ * gamelib.h: This file stores the interfaces of the game related classes.
  * Copyright (C) 2002-2008 Woei-Kae Chen <wkc@csie.ntut.edu.tw>
  *
  * This file is part of game, a free game development framework for windows.
@@ -74,29 +74,29 @@ using namespace std;
 namespace game_framework {
 
 	/////////////////////////////////////////////////////////////////////////////
-	// 這個class提供動態(可以移動)的圖形
-	// 每個Public Interface的用法都要懂，Implementation可以不懂
+	// This class provides dynamic (can move) graphics
+	// The usage of each Public Interface should be understood, Implementation can not understand
 	/////////////////////////////////////////////////////////////////////////////
 
 	class CMovingBitmap {
 	public:
 		CMovingBitmap();
-		int   Height();						// 取得圖形的高度
-		int   Left();						// 取得圖形的左上角的 x 座標
+		int   Height();						// Get the height of the shape
+		int   Left();						// Get the x coordinate in the upper left corner of the graph
 		void  SetAnimation(int delay, bool _once);
-		void  LoadBitmap(int, COLORREF = CLR_INVALID);		// 載入圖，指定圖的編號(resource)及透明色
-		void  LoadBitmap(char*, COLORREF = CLR_INVALID);	// 載入圖，指定圖的檔名及透明色
-		void  LoadBitmap(vector<char*>, COLORREF = CLR_INVALID);	// 載入圖，指定圖的檔名及透明色
-		void  LoadBitmapByString(vector<string>, COLORREF = CLR_INVALID);	// 載入圖，指定圖的檔名及透明色
+		void  LoadBitmap(int, COLORREF = CLR_INVALID);		// Load the drawing, specify the number (resource) and transparent color of the drawing
+		void  LoadBitmap(char*, COLORREF = CLR_INVALID);	// Load the image, specify the file name and transparent color of the image
+		void  LoadBitmap(vector<char*>, COLORREF = CLR_INVALID);	// Load the image, specify the file name and transparent color of the image
+		void  LoadBitmapByString(vector<string>, COLORREF = CLR_INVALID);	// Load the image, specify the file name and transparent color of the image
 		void  UnshowBitmap();
-		void  SetTopLeft(int, int);			// 將圖的左上角座標移至 (x,y)
-		void  ShowBitmap();					// 將圖貼到螢幕
-		void  ShowBitmap(double factor);	// 將圖貼到螢幕 factor < 1時縮小，>1時放大。注意：需要VGA卡硬體的支援，否則會很慢
+		void  SetTopLeft(int, int);			// Move the top left coordinate of the graph to (x,y)
+		void  ShowBitmap();					// Paste the picture on the screen
+		void  ShowBitmap(double factor);	// Paste the picture to the screen factor < 1 to shrink, > 1 to enlarge. Note: VGA card hardware support is required, otherwise it will be very slow.
 		void  SelectShowBitmap(int select);
 		int   GetSelectShowBitmap();
 		void  ToggleAnimation();
-		int   Top();						// 取得圖形的左上角的 y 座標
-		int   Width();						// 取得圖形的寬度
+		int   Top();						// Get the y-coordinate in the upper left corner of the graph
+		int   Width();						// Get the width of the shape
 		bool  IsAnimationDone();
 		int   GetMovingBitmapFrame();
 	protected:

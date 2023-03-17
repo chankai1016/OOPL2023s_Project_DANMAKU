@@ -23,8 +23,9 @@ namespace game_framework {
 
 	/////////////////////////////////////////////////////////////////////////////
 	// CGame: Game Class
-	// ³o­Óclass¬O¹CÀ¸ªºfacade¡A¬OMFC»P¦U­Ó¹CÀ¸ª¬ºAªº¾ô¼Ù¡A¦pªG¤£¼W¥[©Î´î¤Ö
-	// ¹CÀ¸ª¬ºAªº¸Ü¡A¥i¥H¤£¥ÎºÞ³o­Óclassªº¤¶­±»P¹ê§@¡C
+	// This class is the game facade, is the bridge between MFC and each
+	// game state, if you do not increase or decrease the game state,
+	// you can ignore the interface and implementation of this class.
 	/////////////////////////////////////////////////////////////////////////////
 
 	CGame CGame::instance;
@@ -58,18 +59,18 @@ namespace game_framework {
 
 	void CGame::OnDraw()
 	{
-		CDDraw::BltBackColor(DEFAULT_BG_COLOR);	// ±N Back Plain ¶î¶Â
-		gameState->OnDraw();					// Åã¥Ü¹CÀ¸¤¤ªº¨C­Ó¤¸¯À
+		CDDraw::BltBackColor(DEFAULT_BG_COLOR);	// Black out the Back Plain
+		gameState->OnDraw();					// Show each element of the game
 		if (!running) {
 			//
-			// ¦pªG¦b¼È°±ª¬ºA¡A«hÅã¥ÜCtrl-Q...
+			// If in pause state, Ctrl-Q is displayed...
 			//
 			// CMovingBitmap bmp;
 			// bmp.LoadBitmap(IDB_CONTINUE);
 			// bmp.SetTopLeft(0, 0);
 			// bmp.ShowBitmap();
 		}
-		CDDraw::BltBackToPrimary();				// ±N Back Plain ¶K¨ì¿Ã¹õ
+		CDDraw::BltBackToPrimary();				// Paste Back Plain to the screen
 	}
 
 	void  CGame::OnFilePause()
@@ -87,50 +88,50 @@ namespace game_framework {
 		}
 	}
 
-	bool CGame::OnIdle()  // ­×§ï¥\¯à¤£­n­×§ïOnIdle()¡A¦ÓÀ³­×§ïOnMove()¤ÎOnShow()
+	bool CGame::OnIdle()  // When modifying the function, do not modify OnIdle(), but modify OnMove() and OnShow().
 	{
 		if (suspended) {
 			running = false;
 			suspended = false;
 		}
 		//
-		// ±±¨î¹CÀ¸¬O§_¼È°±
+		// Control whether the game is suspended
 		//
 		if (!running)
 			return false;
 		//
-		// ¥H¤U¬O¹CÀ¸ªº¥D°j°é
+		// Here are the main loops of the game
 		//
-		CDDraw::BltBackColor(DEFAULT_BG_COLOR);	// ±N Back Plain ¶î¤W¹w³]ªºÃC¦â
+		CDDraw::BltBackColor(DEFAULT_BG_COLOR);	// Paint the Back Plain with the default color.
 		gameState->OnCycle();
-		CDDraw::BltBackToPrimary();				// ±N Back Plain ¶K¨ì¿Ã¹õ
+		CDDraw::BltBackToPrimary();				// Paste Back Plain to the screen.
 		//
-		// ¥H¤Uªºµ{¦¡±±¨î¹CÀ¸¶i¦æªº³t«×¡Aª`·N¨Æ¶µ¡G
-		// 1. ¥ÎDebug mode¥i¥HÀËµø¨C¤@¦¸°j°éªá±¼ªº®É¶¡¡A¥O¦¹®É¶¡¬°t¡C
-		// 2. ±q¤W¦¸Â÷¶}OnIdle()¦Ü¦¹¡A®É¶¡©w¬°33ms¡A¤£¥i§R°£¡A¨ä®É¶¡¤£¥i§C©ót¡C
+		// The following program controls the speed of the game.
+		// 1. Use Debug mode to view the time spent on each loop, so that this time is t.
+		// 2. From the last time you leave OnIdle() to this, the time is set to 33ms, which cannot be deleted, and the time cannot be lower than t.
 		//
 		if (SHOW_GAME_CYCLE_TIME)
 			TRACE("Ellipse time for the %d th cycle=%d \n", CSpecialEffect::GetCurrentTimeCount(), CSpecialEffect::GetEllipseTime());
 		CSpecialEffect::DelayFromSetCurrentTime(GAME_CYCLE_TIME);
-		CSpecialEffect::SetCurrentTime();	// ³]©wÂ÷¶}OnIdle()ªº®É¶¡
+		CSpecialEffect::SetCurrentTime();	// Set the time to leave OnIdle()
 		return true;
 	}
 
-	void CGame::OnInit()	// OnInit() ¥u¦bµ{¦¡¤@¶}©l®É°õ¦æ¤@¦¸
+	void CGame::OnInit()	// OnInit() is executed only once at the beginning of the program
 	{
 		//
-		// ±Ò°Ê¶Ã¼Æ
+		// Start random number
 		//
 		srand((unsigned)time(NULL));
 		//
-		// ¶}±ÒDirectXÃ¸¹Ï¤¶­±
+		// Open the DirectX graphics interface
 		//
-		CDDraw::Init(SIZE_X, SIZE_Y);							// ³]©w¹CÀ¸¸ÑªR«×
+		CDDraw::Init(SIZE_X, SIZE_Y);							// Set the game resolution
 		//
-		// ¶}±ÒDirectX­µ®Ä¤¶­±
+		// Open DirectX sound interface
 		//
-		if (!CAudio::Instance()->Open())						// ¶}±Ò­µ®Ä¤¶­±
-			AfxMessageBox("Audio Interface Failed (muted)");	// µL­µ®Ä¤¶­±
+		if (!CAudio::Instance()->Open())						// Open the sound interface
+			AfxMessageBox("Audio Interface Failed (muted)");	// No sound interface
 		//
 		// Switch to the first state
 		//
@@ -143,7 +144,7 @@ namespace game_framework {
 	void CGame::OnInitStates()
 	{
 		//
-		// ©I¥s¨C­Óª¬ºAªºOnInitialUpdate
+		// Call OnInitialUpdate for each status
 		//
 		for (int i = 0; i < NUM_GAME_STATES; i++)
 			gameStateTable[i]->OnInit();
@@ -152,7 +153,7 @@ namespace game_framework {
 	void CGame::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	{
 		if (running)
-			if ((nFlags & 0x4000) == 0) // ¥h°£auto repeat
+			if ((nFlags & 0x4000) == 0) // åŽ»é™¤auto repeat
 				gameState->OnKeyDown(nChar, nRepCnt, nFlags);
 #ifdef _UNITTEST					// invike unit test if _UNITTEST is defined
 		void runTest();
@@ -243,7 +244,8 @@ namespace game_framework {
 
 	/////////////////////////////////////////////////////////////////////////////
 	// CSpecialEffect: Specail Effect functions
-	// ¤@¯ëªº¹CÀ¸¨Ã¤£»Ýª½±µ¾Þ§@³o­Óª«¥ó¡A¦]¦¹¥i¥H¥þ³¡²¤¹L¤£¬Ý
+	// The general game does not require direct operation of this object,
+	// so you can skip all of them without looking
 	/////////////////////////////////////////////////////////////////////////////
 
 	DWORD CSpecialEffect::ctime = 0;
@@ -284,8 +286,8 @@ namespace game_framework {
 
 	/////////////////////////////////////////////////////////////////////////////
 	// CDDraw: Direct Draw Object
-	// ³o­Óclass·|«Ø¥ßDirectDrawª«¥ó¡A¥H´£¨Ñ¨ä¥Lclass¨Ï¥Î
-	// ³o­Óclassªº¥þ³¡µ{¦¡³£¬O§C¶¥ªºÃ¸¹Ï¤¶­±¡A¥i¥H¥þ³¡²¤¹L¤£¬Ý
+	// This class will create DirectDraw objects to be used by other classes.
+	// All the programs in this class are low-level drawing interfaces, so you can skip them all.
 	/////////////////////////////////////////////////////////////////////////////
 
 	HDC							CDDraw::hdc;
@@ -900,12 +902,13 @@ namespace game_framework {
 	}
 
 	/////////////////////////////////////////////////////////////////////////////
-	// ³o­Óclass¬°¹CÀ¸ªº¦UºØª¬ºA¤§Base class(¬O¤@­Óabstract class)
+	// This class is the base class of the various states of the game
+	// (it is an abstract class)
 	/////////////////////////////////////////////////////////////////////////////
 
 	CGameState::CGameState(CGame *g)
 	{
-		game = g; 	// ³]©wgameªºpointer
+		game = g; 	// è¨­å®šgameçš„pointer
 	}
 
 	void CGameState::GotoGameState(int state)
@@ -930,45 +933,45 @@ namespace game_framework {
 		const int progress_y1 = y1 + pen_width;
 		const int progress_y2 = y2 - pen_width;
 
-		CDDraw::BltBackColor(DEFAULT_BG_COLOR);		// ±N Back Plain ¶î¤W¹w³]ªºÃC¦â
+		CDDraw::BltBackColor(DEFAULT_BG_COLOR);		// Paint the Back Plain with the default color.
 
-		// CMovingBitmap loading;						// ¶K¤Wloading¹Ï¥Ü
+		// CMovingBitmap loading;						// Paste the loading icon
 		// loading.LoadBitmap({ "RES/loading.bmp" });
 		// loading.SetTopLeft(0, 0);
 		// loading.ShowBitmap();
 
 		//
-		// ¥H¤U¬°CDCªº¥Îªk
+		// The following is the usage of CDC
 		//
-		CDC *pDC = CDDraw::GetBackCDC();			// ¨ú±o Back Plain ªº CDC 
-		CPen *pp, p(PS_NULL, 0, RGB(0, 0, 0));		// ²M°£pen
+		CDC *pDC = CDDraw::GetBackCDC();			// Get Back Plain's CDC
+		CPen *pp, p(PS_NULL, 0, RGB(0, 0, 0));		// Clear pen
 		pp = pDC->SelectObject(&p);
 
-		CBrush *pb, b(RGB(155, 155, 155));				// µeºñ¦â progress®Ø
+		CBrush *pb, b(RGB(155, 155, 155));				// Draw green progress frame
 		pb = pDC->SelectObject(&b);
 		pDC->Rectangle(x1, y1, x2, y2);
 
-		CBrush b1(DEFAULT_BG_COLOR);				// µe¶Â¦â progrss¤¤¤ß
+		CBrush b1(DEFAULT_BG_COLOR);				// Draw black progrss center
 		pDC->SelectObject(&b1);
 		pDC->Rectangle(progress_x1, progress_y1, progress_x2_end, progress_y2);
 
-		CBrush b2(RGB(255, 255, 255));					// µe¶À¦â progrss¶i«×
+		CBrush b2(RGB(255, 255, 255));					// Draw yellow progrss progress
 		pDC->SelectObject(&b2);
 		pDC->Rectangle(progress_x1, progress_y1, progress_x2, progress_y2);
 
-		pDC->SelectObject(pp);						// ÄÀ©ñ pen
-		pDC->SelectObject(pb);						// ÄÀ©ñ brush
+		pDC->SelectObject(pp);						// Release pen
+		pDC->SelectObject(pb);						// Release brush
 
 		CFont *fp;
-		CTextDraw::ChangeFontLog(pDC, fp, 30, "·L³n¥¿¶ÂÅé");
+		CTextDraw::ChangeFontLog(pDC, fp, 30, "Microsoft JhengHei");
 
 		CTextDraw::Print(pDC, x1, (int)(SIZE_Y * 0.40), message.c_str());
 
-		CDDraw::ReleaseBackCDC();					// ©ñ±¼ Back Plain ªº CDC
+		CDDraw::ReleaseBackCDC();					// Drop Back Plain's CDC
 		//
-		// ¦pªG¬O§Oªº¦a¤è¥Î¨ìCDCªº¸Ü¡A¤£­n§Û¥H¤U³o¦æ¡A§_«h¿Ã¹õ·|°{Ã{
+		// If the CDC is used elsewhere, do not copy the following line, otherwise the screen will flicker
 		//
-		CDDraw::BltBackToPrimary();					// ±N Back Plain ¶K¨ì¿Ã¹õ
+		CDDraw::BltBackToPrimary();					// Paste Back Plain to the screen.
 	}
 
 	void CGameState::OnDraw() // Template Method

@@ -1,19 +1,19 @@
 /////////////////////////////////////////////////////////////////////////////
-// 定義遊戲可設定的環境與條件
+// Defining the game's configurable environment and conditions
 /////////////////////////////////////////////////////////////////////////////
 
 #define GAME_TITLE           "Game"
-#define SIZE_X				 1400		// 設定遊戲畫面的解析度為640x480
-#define SIZE_Y				 900		// 註：若不使用標準的解析度，則不能切換到全螢幕
-#define OPEN_AS_FULLSCREEN	 false		// 是否以全螢幕方式開啟遊戲
-#define SHOW_LOAD_PROGRESS   true		// 是否顯示loading(OnInit)的進度
-#define DEFAULT_BG_COLOR	 RGB(0, 0, 0)	// 遊戲畫面預設的背景顏色(黑色)
-#define GAME_CYCLE_TIME		 15		    // 每33ms跑一次Move及Show(每秒30次)
-#define SHOW_GAME_CYCLE_TIME false		// 是否在debug mode顯示cycle time
-#define ENABLE_GAME_PAUSE	 false		// 是否允許以 Ctrl-Q 暫停遊戲
-#define ENABLE_AUDIO		 true		// 啟動音效介面
-#define ENABLE_TOOLBAR       false      // 是否關閉 toolbar
-#define ENABLE_MENU          false      // 是否關閉 menu
-#define ENABLE_STATUSBAR     false      // 是否關閉 statusbar
-#define RESOLUTION_X     1920           // 全螢幕用，請設定成目前視窗的解析度 (width)。
-#define RESOLUTION_Y     1080           // 全螢幕用，請設定成目前視窗的解析度 (height)。
+#define SIZE_X				 1400		// Set the resolution of the game screen to 640x480
+#define SIZE_Y				 900		// Note: If you don't use the standard resolution, you can't switch to full screen.
+#define OPEN_AS_FULLSCREEN	 false		// Whether to open the game in full screen or not
+#define SHOW_LOAD_PROGRESS   true		// Whether to show the progress of loading (OnInit)
+#define DEFAULT_BG_COLOR	 RGB(0, 0, 0)	// The default background color of the game screen (black)
+#define GAME_CYCLE_TIME		 15		    // Run Move and Show every 33ms (30 times per second)
+#define SHOW_GAME_CYCLE_TIME false		// whether to show the cycle time in debug mode
+#define ENABLE_GAME_PAUSE	 false		// whether to allow Ctrl-Q to pause the game
+#define ENABLE_AUDIO		 true		// Enable the sound interface
+#define ENABLE_TOOLBAR       false      // whether to turn off the toolbar
+#define ENABLE_MENU          false      // Turn off menu or not
+#define ENABLE_STATUSBAR     false      // turn off the statusbar
+#define RESOLUTION_X     1920           // For full screen, set to the current window resolution (width).
+#define RESOLUTION_Y     1080           // For full screen, please set to the current window resolution (height).
