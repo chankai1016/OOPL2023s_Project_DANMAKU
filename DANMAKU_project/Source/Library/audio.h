@@ -1,5 +1,6 @@
 /*
- * gamelib.h: 本檔案儲遊戲相關的class的interface
+ * gamelib.h: This file stores the interfaces of the game related classes.
+ 
  * Copyright (C) 2002-2008 Woei-Kae Chen <wkc@csie.ntut.edu.tw>
  *
  * This file is part of game, a free game development framework for windows.

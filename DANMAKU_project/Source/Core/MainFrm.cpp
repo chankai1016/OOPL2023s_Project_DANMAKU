@@ -111,14 +111,15 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	//  be dockable
 
 	//
-	// 確定ToolBar的位置為固定的，以便計算window size
+	// Make sure the position of the ToolBar is fixed,
+	// for calculating the window size.
 	//
 	// m_wndToolBar.EnableDocking(CBRS_ALIGN_ANY);
 	// EnableDocking(CBRS_ALIGN_ANY);
 	// DockControlBar(&m_wndToolBar);
 
 	//
-	// 儲存Menu的pointer
+	// Save Menu pointer
 	//
 	pMenu = GetMenu();
 	//
@@ -130,7 +131,7 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 
 	SetWindowText(_T(GAME_TITLE));
 
-	// 如果是Full Screen的話，隱藏ToolBar, StatusBar, Menu
+	// If it is Full Screen, hide ToolBar, StatusBar, Menu.
 	//
 	if (isFullScreen) {
 		m_wndToolBar.ShowWindow(SW_HIDE);
