@@ -1,5 +1,5 @@
 /*
- * gamelib.h: This is the file that contains the interface to the game-related classes.
+ * gamelib.h: 本檔案儲遊戲相關的class的interface
  * Copyright (C) 2002-2008 Woei-Kae Chen <wkc@csie.ntut.edu.tw>
  *
  * This file is part of game, a free game development framework for windows.
@@ -68,9 +68,12 @@
 using namespace std;
 
 /////////////////////////////////////////////////////////////////////////////
-// This class creates DirectX Audio objects to provide sound effects
-// You must understand how to use each Public Interface
-// Note: Sound files can be WAVE (.wav) or MIDI (.mid) files, and multiple sound files can be mixed (played back simultaneously), but only one MIDI file can be mixed. You cannot play two MIDI files at the same time.
+// 這個class會建立DirectX Audio物件，以提供音效
+// 每個Public Interface的用法都要懂，Implementation可以不懂
+// 注意事項：音效檔案可以用WAVE檔(.wav)或MIDI檔(.mid)，數個音效檔案可以
+//           混合(同時)撥放，但是其中只能混合一個MIDI檔，兩個MIDI檔案不
+//           能同時撥放，如果同時撥放兩個MIDI檔的話，前一個MIDI檔會被停
+//           掉。
 /////////////////////////////////////////////////////////////////////////////
 
 namespace game_framework {
@@ -78,15 +81,15 @@ namespace game_framework {
 class CAudio {
 public:
 	~CAudio();
-	void           Close();	
-	static CAudio* Instance();
-	bool           Load(unsigned, char *);
-	bool           Open();
-	void		   Pause();
-	void           Play(unsigned, bool=false);
-	void		   Resume();
-	void           SetPowerResume();
-	void           Stop(unsigned);
+	void           Close();						// 關閉Direct Sound介面
+	static CAudio* Instance();					// 取得CAudio的Instance
+	bool           Load(unsigned, char *);		// 載入編號i的聲音，指定MIDI檔案
+	bool           Open();						// 開啟Direct Sound介面
+	void		   Pause();						// 暫停播放所有音效
+	void           Play(unsigned, bool=false);	// 開始撥放編號i的聲音，指定是否重覆撥放
+	void		   Resume();					// 復原暫停播放的音效
+	void           SetPowerResume();			// 電源恢復
+	void           Stop(unsigned);				// 停止撥放編號i的聲音
 private:
 	class Info {
 	public:
@@ -100,7 +103,7 @@ private:
 	static void ExecuteMciCommand(char *); // 
 	void SendMciCommand(char *);	// 
 	CAudio();						// private constructor
-	static CAudio		audio;		// auto destruct
+	static CAudio		audio;		// 自動destruct
 	map<int, Info>		info;
 	bool				isOpened;
     HANDLE				hThread;	// MCI command thread

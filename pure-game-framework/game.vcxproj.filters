@@ -42,6 +42,9 @@
     <ClCompile Include="Source\Core\MainFrm.cpp">
       <Filter>MFC</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Core\StdAfx.cpp">
+      <Filter>MFC</Filter>
+    </ClCompile>
     <ClCompile Include="Source\Game\mygame_initialize.cpp">
       <Filter>MyGame</Filter>
     </ClCompile>
@@ -50,9 +53,6 @@
     </ClCompile>
     <ClCompile Include="Source\Game\mygame_run.cpp">
       <Filter>MyGame</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Core\StdAfx.cpp">
-      <Filter>MFC</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -80,14 +80,14 @@
     <ClInclude Include="Source\Core\Resource.h">
       <Filter>MFC</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Core\StdAfx.h">
+      <Filter>MFC</Filter>
+    </ClInclude>
     <ClInclude Include="Source\Game\mygame.h">
       <Filter>MyGame</Filter>
     </ClInclude>
     <ClInclude Include="Source\Game\config.h">
       <Filter>MyGame</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Core\StdAfx.h">
-      <Filter>MFC</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
