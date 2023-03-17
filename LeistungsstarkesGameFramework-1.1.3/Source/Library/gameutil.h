@@ -1,6 +1,6 @@
 #pragma once
 /*
- * gamelib.h: This file stores the interfaces of the game related classes.
+ * gamelib.h: 本檔案儲遊戲相關的class的interface
  * Copyright (C) 2002-2008 Woei-Kae Chen <wkc@csie.ntut.edu.tw>
  *
  * This file is part of game, a free game development framework for windows.
@@ -75,8 +75,8 @@ using namespace std;
 namespace game_framework {
 
 	/////////////////////////////////////////////////////////////////////////////
-	// This class provides dynamic (can move) graphics
-	// The usage of each Public Interface should be understood, Implementation can not understand
+	// 這個class提供動態(可以移動)的圖形
+	// 每個Public Interface的用法都要懂，Implementation可以不懂
 	/////////////////////////////////////////////////////////////////////////////
 
 	class CMovingBitmap {
@@ -84,10 +84,10 @@ namespace game_framework {
 		CMovingBitmap();
 
 		/* The function for loading the bitmap. */
-		void  LoadBitmap(int, COLORREF = CLR_INVALID);		// Load the drawing, specify the number (resource) and transparent color of the drawing
-		void  LoadBitmap(char*, COLORREF = CLR_INVALID);	// Load the image, specify the file name and transparent color of the image
-		void  LoadBitmap(vector<char*>, COLORREF = CLR_INVALID);	// Load the image, specify the file name and transparent color of the image
-		void  LoadBitmapByString(vector<string>, COLORREF = CLR_INVALID);	// Load the image, specify the file name and transparent color of the image
+		void  LoadBitmap(int, COLORREF = CLR_INVALID);		// 載入圖，指定圖的編號(resource)及透明色
+		void  LoadBitmap(char*, COLORREF = CLR_INVALID);	// 載入圖，指定圖的檔名及透明色
+		void  LoadBitmap(vector<char*>, COLORREF = CLR_INVALID);	// 載入圖，指定圖的檔名及透明色
+		void  LoadBitmapByString(vector<string>, COLORREF = CLR_INVALID);	// 載入圖，指定圖的檔名及透明色
 		void  LoadEmptyBitmap(int height, int weight);
 		
 		/* Unshow the bitmap. */
@@ -96,11 +96,11 @@ namespace game_framework {
 		/* Setter */
 		void  SetAnimation(int delay, bool _once);
 		void  SetFrameIndexOfBitmap(int frame);
-		void  SetTopLeft(int, int);			// Move the top left coordinate of the graph to (x,y)
+		void  SetTopLeft(int, int);			// 將圖的左上角座標移至 (x,y)
 
 		/* Show the bitmap with or without factor. */
-		void  ShowBitmap();					// Paste the picture on the screen
-		void  ShowBitmap(double factor);	// Paste the picture to the screen factor < 1 to shrink, > 1 to enlarge. Note: VGA card hardware support is required, otherwise it will be very slow.
+		void  ShowBitmap();					// 將圖貼到螢幕
+		void  ShowBitmap(double factor);	// 將圖貼到螢幕 factor < 1時縮小，>1時放大。注意：需要VGA卡硬體的支援，否則會很慢
 		
 		/* Getter */
 		int   GetFrameIndexOfBitmap();
@@ -123,26 +123,26 @@ namespace game_framework {
 		void  ToggleAnimation();
 
 	protected:
-		//! The index value of the current frame.
+		//! 當前幀的索引值。
 		int frameIndex = 0;
-		//! The delay of current frame switching.
+		//! 當前幀切換的延遲。
 		int delayCount = 10;
-		//! The number of times to save the current animation.
+		//! 儲存當前動畫的次數。
 		int animationCount = -1;
-		//! Whether the saved object is animated or not.
+		//! 儲存物件是否為動畫。
 		bool isAnimation = false;
-		//! Whether the Save Object animation has ended or not
+		//! 儲存物件動畫是否已結束
 		bool isAnimationDone = true;
-		//! Save whether the picture has been read
+		//! 儲存圖片是否已讀取
 		bool isBitmapLoaded = false;	// whether a bitmap has been loaded
-		//! Whether to save the object animation as a single animation
+		//! 儲存物件動畫是否為單次動畫
 		bool isOnce = false;
 		vector<CRect>    locations;			// location of the bitmap
 		vector<unsigned> surfaceID;
 		clock_t last_time = clock();
-		//! Save the path to the image read by the object
+		//! 儲存物件讀取的圖片路徑
 		string   imageFileName = "";
-		//! Save object filtered picture colors
+		//! 儲存物件過濾的圖片顏色
 		COLORREF filterColor = CLR_INVALID;
 
 	private:

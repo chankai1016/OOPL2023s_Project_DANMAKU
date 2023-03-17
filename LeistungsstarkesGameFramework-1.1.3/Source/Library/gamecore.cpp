@@ -23,9 +23,8 @@ namespace game_framework {
 
 	/////////////////////////////////////////////////////////////////////////////
 	// CGame: Game Class
-	// This class is the game facade, is the bridge between MFC and each
-	// game state, if you do not increase or decrease the game state,
-	// you can ignore the interface and implementation of this class.
+	// 這個class是遊戲的facade，是MFC與各個遊戲狀態的橋樑，如果不增加或減少
+	// 遊戲狀態的話，可以不用管這個class的介面與實作。
 	/////////////////////////////////////////////////////////////////////////////
 
 	CGame CGame::instance;
@@ -59,18 +58,18 @@ namespace game_framework {
 
 	void CGame::OnDraw()
 	{
-		CDDraw::BltBackColor(DEFAULT_BG_COLOR);	// Black out the Back Plain
-		gameState->OnDraw();					// Show each element of the game
+		CDDraw::BltBackColor(DEFAULT_BG_COLOR);	// 將 Back Plain 塗黑
+		gameState->OnDraw();					// 顯示遊戲中的每個元素
 		if (!running) {
 			//
-			// If in pause state, Ctrl-Q is displayed...
+			// 如果在暫停狀態，則顯示Ctrl-Q...
 			//
 			// CMovingBitmap bmp;
 			// bmp.LoadBitmap(IDB_CONTINUE);
 			// bmp.SetTopLeft(0, 0);
 			// bmp.ShowBitmap();
 		}
-		CDDraw::BltBackToPrimary();				// Paste Back Plain to the screen
+		CDDraw::BltBackToPrimary();				// 將 Back Plain 貼到螢幕
 	}
 
 	void  CGame::OnFilePause()
@@ -88,50 +87,50 @@ namespace game_framework {
 		}
 	}
 
-	bool CGame::OnIdle()  // When modifying the function, do not modify OnIdle(), but modify OnMove() and OnShow().
+	bool CGame::OnIdle()  // 修改功能不要修改OnIdle()，而應修改OnMove()及OnShow()
 	{
 		if (suspended) {
 			running = false;
 			suspended = false;
 		}
 		//
-		// Control whether the game is suspended
+		// 控制遊戲是否暫停
 		//
 		if (!running)
 			return false;
 		//
-		// Here are the main loops of the game
+		// 以下是遊戲的主迴圈
 		//
-		CDDraw::BltBackColor(DEFAULT_BG_COLOR);	// Paint the Back Plain with the default color.
+		CDDraw::BltBackColor(DEFAULT_BG_COLOR);	// 將 Back Plain 塗上預設的顏色
 		gameState->OnCycle();
-		CDDraw::BltBackToPrimary();				// Paste Back Plain to the screen.
+		CDDraw::BltBackToPrimary();				// 將 Back Plain 貼到螢幕
 		//
-		// The following program controls the speed of the game.
-		// 1. Use Debug mode to view the time spent on each loop, so that this time is t.
-		// 2. From the last time you leave OnIdle() to this, the time is set to 33ms, which cannot be deleted, and the time cannot be lower than t.
+		// 以下的程式控制遊戲進行的速度，注意事項：
+		// 1. 用Debug mode可以檢視每一次迴圈花掉的時間，令此時間為t。
+		// 2. 從上次離開OnIdle()至此，時間定為33ms，不可刪除，其時間不可低於t。
 		//
 		if (SHOW_GAME_CYCLE_TIME)
 			TRACE("Ellipse time for the %d th cycle=%d \n", CSpecialEffect::GetCurrentTimeCount(), CSpecialEffect::GetEllipseTime());
 		CSpecialEffect::DelayFromSetCurrentTime(GAME_CYCLE_TIME);
-		CSpecialEffect::SetCurrentTime();	// Set the time to leave OnIdle()
+		CSpecialEffect::SetCurrentTime();	// 設定離開OnIdle()的時間
 		return true;
 	}
 
-	void CGame::OnInit()	// OnInit() is executed only once at the beginning of the program
+	void CGame::OnInit()	// OnInit() 只在程式一開始時執行一次
 	{
 		//
-		// Start random number
+		// 啟動亂數
 		//
 		srand((unsigned)time(NULL));
 		//
-		// Open the DirectX graphics interface
+		// 開啟DirectX繪圖介面
 		//
-		CDDraw::Init(SIZE_X, SIZE_Y);							// Set the game resolution
+		CDDraw::Init(SIZE_X, SIZE_Y);							// 設定遊戲解析度
 		//
-		// Open DirectX sound interface
+		// 開啟DirectX音效介面
 		//
-		if (!CAudio::Instance()->Open())						// Open the sound interface
-			AfxMessageBox("Audio Interface Failed (muted)");	// No sound interface
+		if (!CAudio::Instance()->Open())						// 開啟音效介面
+			AfxMessageBox("Audio Interface Failed (muted)");	// 無音效介面
 		//
 		// Switch to the first state
 		//
@@ -144,7 +143,7 @@ namespace game_framework {
 	void CGame::OnInitStates()
 	{
 		//
-		// Call OnInitialUpdate for each status
+		// 呼叫每個狀態的OnInitialUpdate
 		//
 		for (int i = 0; i < NUM_GAME_STATES; i++)
 			gameStateTable[i]->OnInit();
@@ -244,8 +243,7 @@ namespace game_framework {
 
 	/////////////////////////////////////////////////////////////////////////////
 	// CSpecialEffect: Specail Effect functions
-	// The general game does not require direct operation of this object,
-	// so you can skip all of them without looking
+	// 一般的遊戲並不需直接操作這個物件，因此可以全部略過不看
 	/////////////////////////////////////////////////////////////////////////////
 
 	DWORD CSpecialEffect::ctime = 0;
@@ -286,8 +284,8 @@ namespace game_framework {
 
 	/////////////////////////////////////////////////////////////////////////////
 	// CDDraw: Direct Draw Object
-	// This class will create DirectDraw objects to be used by other classes.
-	// All the programs in this class are low-level drawing interfaces, so you can skip them all.
+	// 這個class會建立DirectDraw物件，以提供其他class使用
+	// 這個class的全部程式都是低階的繪圖介面，可以全部略過不看
 	/////////////////////////////////////////////////////////////////////////////
 
 	HDC							CDDraw::hdc;
@@ -953,8 +951,7 @@ namespace game_framework {
 	}
 
 	/////////////////////////////////////////////////////////////////////////////
-	// This class is the base class of the various states of the game
-	// (it is an abstract class)
+	// 這個class為遊戲的各種狀態之Base class(是一個abstract class)
 	/////////////////////////////////////////////////////////////////////////////
 
 	CGameState::CGameState(CGame *g)
@@ -984,45 +981,45 @@ namespace game_framework {
 		const int progress_y1 = y1 + pen_width;
 		const int progress_y2 = y2 - pen_width;
 
-		CDDraw::BltBackColor(DEFAULT_BG_COLOR);		// Paint the Back Plain with the default color.
+		CDDraw::BltBackColor(DEFAULT_BG_COLOR);		// 將 Back Plain 塗上預設的顏色
 
-		// CMovingBitmap loading;						// Paste the loading icon
+		// CMovingBitmap loading;						// 貼上loading圖示
 		// loading.LoadBitmap({ "RES/loading.bmp" });
 		// loading.SetTopLeft(0, 0);
 		// loading.ShowBitmap();
 
 		//
-		// The following is the usage of CDC
+		// 以下為CDC的用法
 		//
-		CDC *pDC = CDDraw::GetBackCDC();			// Get Back Plain's CDC
-		CPen *pp, p(PS_NULL, 0, RGB(0, 0, 0));		// Clear pen
+		CDC *pDC = CDDraw::GetBackCDC();			// 取得 Back Plain 的 CDC 
+		CPen *pp, p(PS_NULL, 0, RGB(0, 0, 0));		// 清除pen
 		pp = pDC->SelectObject(&p);
 
-		CBrush *pb, b(RGB(155, 155, 155));				// Draw green progress frame
+		CBrush *pb, b(RGB(155, 155, 155));				// 畫綠色 progress框
 		pb = pDC->SelectObject(&b);
 		pDC->Rectangle(x1, y1, x2, y2);
 
-		CBrush b1(DEFAULT_BG_COLOR);				// Draw black progrss center
+		CBrush b1(DEFAULT_BG_COLOR);				// 畫黑色 progrss中心
 		pDC->SelectObject(&b1);
 		pDC->Rectangle(progress_x1, progress_y1, progress_x2_end, progress_y2);
 
-		CBrush b2(RGB(255, 255, 255));					// Draw yellow progrss progress
+		CBrush b2(RGB(255, 255, 255));					// 畫黃色 progrss進度
 		pDC->SelectObject(&b2);
 		pDC->Rectangle(progress_x1, progress_y1, progress_x2, progress_y2);
 
-		pDC->SelectObject(pp);						// Release pen
-		pDC->SelectObject(pb);						// Release brush
+		pDC->SelectObject(pp);						// 釋放 pen
+		pDC->SelectObject(pb);						// 釋放 brush
 
 
-		CTextDraw::ChangeFontLog(pDC, 30, "Microsoft JhengHei", RGB(255, 255, 255));
+		CTextDraw::ChangeFontLog(pDC, 30, "微軟正黑體", RGB(255, 255, 255));
 
 		CTextDraw::Print(pDC, x1, (int)(SIZE_Y * 0.40), message.c_str());
 
-		CDDraw::ReleaseBackCDC();					// Drop Back Plain's CDC
+		CDDraw::ReleaseBackCDC();					// 放掉 Back Plain 的 CDC
 		//
-		// If the CDC is used elsewhere, do not copy the following line, otherwise the screen will flicker
+		// 如果是別的地方用到CDC的話，不要抄以下這行，否則螢幕會閃爍
 		//
-		CDDraw::BltBackToPrimary();					// Paste Back Plain to the screen.
+		CDDraw::BltBackToPrimary();					// 將 Back Plain 貼到螢幕
 	}
 
 	void CGameState::OnDraw() // Template Method
