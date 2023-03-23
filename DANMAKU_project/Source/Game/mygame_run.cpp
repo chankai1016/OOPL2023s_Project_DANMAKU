@@ -27,12 +27,13 @@ void CGameStateRun::OnBeginState()
 
 void CGameStateRun::OnMove()							// Mobile game elements
 {
-	
+	background.LoadBitmapByString({ "Resources/img/back/0/back0.bmp" });
+	background.SetTopLeft(0, 0);
+	background.ShowBitmap();
 }
 
 void CGameStateRun::OnInit()  								// The initial values and graphics settings of the game
 {
-	
 }
 
 void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)

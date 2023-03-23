@@ -66,6 +66,9 @@ namespace game_framework {
 		void OnShow();									// Show this state of the game screen
 	private:
 		CMovingBitmap logo;								// csie logo
+		void load_background();
+		void draw_text();
+		CMovingBitmap background;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
@@ -89,6 +92,7 @@ namespace game_framework {
 	protected:
 		void OnMove();									// Mobile game elements
 		void OnShow();									// Show this state of the game screen
+		CMovingBitmap background;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
