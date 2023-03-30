@@ -45,7 +45,6 @@ void CGameStateInit::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 void CGameStateInit::load_background() {
 	background.LoadBitmapByString({ "Resources/img/back/0/back0.bmp" });
 	background.SetTopLeft(0, 0);
-	background.ShowBitmap();
 }
 
 void CGameStateInit::OnLButtonDown(UINT nFlags, CPoint point)
@@ -55,7 +54,4 @@ void CGameStateInit::OnLButtonDown(UINT nFlags, CPoint point)
 
 void CGameStateInit::OnShow()
 {
-	background.LoadBitmapByString({ "Resources/img/back/0/back0.bmp" });
-	background.SetTopLeft(0, 0);
-	background.ShowBitmap();
 }

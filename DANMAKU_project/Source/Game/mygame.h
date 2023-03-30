@@ -93,6 +93,12 @@ namespace game_framework {
 		void OnMove();									// Mobile game elements
 		void OnShow();									// Show this state of the game screen
 		CMovingBitmap background;
+		CMovingBitmap board;
+		CMovingBitmap character;
+		bool LeftKeyDown;
+		bool RightKeyDown;
+		bool UpKeyDown;
+		bool DownKeyDown;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////

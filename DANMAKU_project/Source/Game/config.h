@@ -3,8 +3,8 @@
 /////////////////////////////////////////////////////////////////////////////
 
 #define GAME_TITLE           "Game"
-#define SIZE_X				 1400		// Set the resolution of the game screen to 640x480
-#define SIZE_Y				 900		// Note: If you don't use the standard resolution, you can't switch to full screen.
+#define SIZE_X				 655		// Set the resolution of the game screen to 640x480
+#define SIZE_Y				 500		// Note: If you don't use the standard resolution, you can't switch to full screen.
 #define OPEN_AS_FULLSCREEN	 false		// Whether to open the game in full screen or not
 #define SHOW_LOAD_PROGRESS   true		// Whether to show the progress of loading (OnInit)
 #define DEFAULT_BG_COLOR	 RGB(0, 0, 0)	// The default background color of the game screen (black)

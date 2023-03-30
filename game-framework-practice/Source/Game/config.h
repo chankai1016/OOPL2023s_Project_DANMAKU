@@ -3,8 +3,8 @@
 /////////////////////////////////////////////////////////////////////////////
 
 #define GAME_TITLE           "Game"
-#define SIZE_X				 600		// �]�w�C���e�����ѪR�׬�640x480
-#define SIZE_Y				 600		// ���G�Y���ϥμзǪ��ѪR�סA�h�����������ù�
+#define SIZE_X				 480		// �]�w�C���e�����ѪR�׬�640x480
+#define SIZE_Y				 639		// ���G�Y���ϥμзǪ��ѪR�סA�h�����������ù�
 #define OPEN_AS_FULLSCREEN	 false		// �O�_�H���ù��覡�}�ҹC��
 #define SHOW_LOAD_PROGRESS   true		// �O�_���loading(OnInit)���i��
 #define DEFAULT_BG_COLOR	 RGB(0, 0, 0)	// �C���e���w�]���I���C��(�¦�)
