@@ -133,25 +133,47 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 			}
 		}
 	}
-	if (nChar == VK_RIGHT) {
-		if ((character.Left() < 480) && (character.Top() == 265)) {
-			character.SetTopLeft(character.Left()+15, character.Top());
-		}
-	}
-	if (nChar == VK_LEFT) {
-		if ((character.Left() > 150) && (character.Top() == 265)) {
-			character.SetTopLeft(character.Left()-15, character.Top());
-		}
-	}
-	if (nChar == VK_DOWN) {
-		if ((character.Left() == 150) && (character.Top() < 430)) {
-			character.SetTopLeft(character.Left(), character.Top()+15);
-		}
-	}
-	if (nChar == VK_UP) {
-		if ((character.Left() == 150) && (character.Top() > 265)) {
-			character.SetTopLeft(character.Left(), character.Top()-15);
-		}
+	//if (nChar == VK_RIGHT) {
+	//	if ((character.Left() < 480) && (character.Top() == 265)) {
+	//		character.SetTopLeft(character.Left()+15, character.Top());
+	//	}
+	//}
+	//if (nChar == VK_LEFT) {
+	//	if ((character.Left() > 150) && (character.Top() == 265)) {
+	//		character.SetTopLeft(character.Left()-15, character.Top());
+	//	}
+	//}
+	//if (nChar == VK_DOWN) {
+	//	if ((character.Left() == 150) && (character.Top() < 430)) {
+	//		character.SetTopLeft(character.Left(), character.Top()+15);
+	//	}
+	//}
+	//if (nChar == VK_UP) {
+	//	if ((character.Left() == 150) && (character.Top() > 265)) {
+	//		character.SetTopLeft(character.Left(), character.Top()-15);
+	//	}
+	//}
+	switch (nChar) {
+		case VK_RIGHT:
+			if ((character.Left() < 480) && (character.Top() == 265)) {
+				character.SetTopLeft(character.Left() + 15, character.Top());
+			}
+			break;
+		case VK_LEFT:
+			if ((character.Left() > 150) && (character.Top() == 265)) {
+				character.SetTopLeft(character.Left() - 15, character.Top());
+			}
+			break;
+		case VK_DOWN:
+			if ((character.Left() == 150) && (character.Top() < 430)) {
+				character.SetTopLeft(character.Left(), character.Top() + 15);
+			}
+			break;
+		case VK_UP:
+			if ((character.Left() == 150) && (character.Top() > 265)) {
+				character.SetTopLeft(character.Left(), character.Top() - 15);
+			}
+			break;
 	}
 }
 
