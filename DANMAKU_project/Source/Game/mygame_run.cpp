@@ -27,17 +27,49 @@ void CGameStateRun::OnBeginState()
 
 void CGameStateRun::OnMove()							// Mobile game elements
 {
-	if (LeftKeyDown == true) {
-		character.SetTopLeft(character.GetLeft() + 15, character.GetTop());
+	if (ShiftKeyDown == false) {
+		if (LeftKeyDown == true) {
+			if (character.GetLeft() < 371) {
+				character.SetTopLeft(character.GetLeft() + 15, character.GetTop());
+			}
+		}
+		if (RightKeyDown == true) {
+			if (10 < character.GetLeft()) {
+				character.SetTopLeft(character.GetLeft() - 15, character.GetTop());
+			}
+		}
+		if (DownKeyDown == true) {
+			if (character.GetTop() < 433) {
+				character.SetTopLeft(character.GetLeft(), character.GetTop() + 15);
+			}
+		}
+		if (UpKeyDown == true) {
+			if (10 < character.GetTop()) {
+				character.SetTopLeft(character.GetLeft(), character.GetTop() - 15);
+			}
+		}
 	}
-	if (RightKeyDown == true) {
-		character.SetTopLeft(character.GetLeft() - 15, character.GetTop());
-	}
-	if (DownKeyDown == true) {
-		character.SetTopLeft(character.GetLeft(), character.GetTop() + 15);
-	}
-	if (UpKeyDown == true) {
-		character.SetTopLeft(character.GetLeft(), character.GetTop() - 15);
+	else {
+		if (LeftKeyDown == true) {
+			if (character.GetLeft() < 381) {
+				character.SetTopLeft(character.GetLeft() + 5, character.GetTop());
+			}
+		}
+		if (RightKeyDown == true) {
+			if (0 < character.GetLeft()) {
+				character.SetTopLeft(character.GetLeft() - 5, character.GetTop());
+			}
+		}
+		if (DownKeyDown == true) {
+			if (character.GetTop() < 443) {
+				character.SetTopLeft(character.GetLeft(), character.GetTop() + 5);
+			}
+		}
+		if (UpKeyDown == true) {
+			if (0 < character.GetTop()) {
+				character.SetTopLeft(character.GetLeft(), character.GetTop() - 5);
+			}
+		}
 	}
 }
 
@@ -45,9 +77,9 @@ void CGameStateRun::OnInit()  								// The initial values and graphics setting
 {
 	board.LoadBitmapByString({ "Resources/img/back/0/back0.bmp" });
 	board.SetTopLeft(32, 16);
-	background.LoadBitmapByString({ "Resources/img/board/backboard.bmp" });
+	background.LoadBitmapByString({ "Resources/img/board/backboard.bmp"}, RGB(0, 255, 0));
 	background.SetTopLeft(0, 0);
-	character.LoadBitmapByString({ "Resources/img/char/0.bmp" });
+	character.LoadBitmapByString({ "Resources/img/char/0.bmp"}, RGB(0, 255, 0));
 	character.SetTopLeft(0, 0);
 }
 
@@ -65,7 +97,9 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	if (nChar == VK_UP) {
 		UpKeyDown = true;
 	}
-	
+	if (nChar == VK_SHIFT) {
+		ShiftKeyDown = true;
+	}
 }
 
 void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -81,6 +115,9 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 	}
 	if (nChar == VK_UP) {
 		UpKeyDown = false;
+	}
+	if (nChar == VK_SHIFT) {
+		ShiftKeyDown = false;
 	}
 
 }

@@ -99,6 +99,11 @@ namespace game_framework {
 		bool RightKeyDown;
 		bool UpKeyDown;
 		bool DownKeyDown;
+		bool ShiftKeyDown;
+		bool EnterKeyDown;
+		bool ZKeyDown;
+		bool SpaceKeyDown;
+		bool XKeyDown;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
