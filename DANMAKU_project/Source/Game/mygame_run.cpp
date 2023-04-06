@@ -99,7 +99,7 @@ void CGameStateRun::OnMove() // Mobile game elements
 			my_shot[my_shot_cnt].SetTopLeft(character.GetLeft() + 20, character.GetTop());
 			my_shot[my_shot_cnt].ShowBitmap();
 			my_shot_cnt++;
-			my_shot[my_shot_cnt].SetTopLeft(character.GetLeft() + 37, character.GetTop());
+			my_shot[my_shot_cnt].SetTopLeft(character.GetLeft() + 42, character.GetTop());
 			my_shot[my_shot_cnt].ShowBitmap();
 			my_shot_cnt++;
 			if (my_shot_cnt > my_shot_max)
@@ -137,7 +137,7 @@ void CGameStateRun::OnInit() // The initial values and graphics settings of the 
 								  "Resources/img/char/0_11.bmp",
 								  "Resources/img/char/0_12.bmp"},
 								 RGB(0, 255, 0));
-	character.SetTopLeft(100, 150);
+	character.SetTopLeft(180, 350);
 	character.SetAnimation(1000, true);
 
 	my_shot_cnt = 0;
