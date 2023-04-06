@@ -13,7 +13,7 @@ using namespace game_framework;
 // This class is the end state of the game (Game Over)
 /////////////////////////////////////////////////////////////////////////////
 
-CGameStateOver::CGameStateOver(CGame *g): CGameState(g)
+CGameStateOver::CGameStateOver(CGame *g) : CGameState(g)
 {
 }
 
@@ -33,11 +33,11 @@ void CGameStateOver::OnInit()
 	// load all of them. To prevent people from waiting impatiently,
 	// the game will show "Loading ..." to show the progress of Loading.
 	//
-	ShowInitProgress(66, "Initialize...");	// Take the progress of the previous state, here the progress is regarded as 66%.
+	ShowInitProgress(66, "Initialize..."); // Take the progress of the previous state, here the progress is regarded as 66%.
 	//
 	// Start loading data
 	//
-	Sleep(1000);				// Slow down to see the progress clearly, the actual game please delete this Sleep
+	Sleep(1000); // Slow down to see the progress clearly, the actual game please delete this Sleep
 	//
 	// The final progress is 100%.
 	//
@@ -48,5 +48,4 @@ void CGameStateOver::OnInit()
 
 void CGameStateOver::OnShow()
 {
-
 }

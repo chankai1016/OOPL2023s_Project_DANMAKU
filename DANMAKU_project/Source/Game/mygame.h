@@ -36,18 +36,19 @@
  *      1. Add namespace game_framework.
  *      2. Replace the demonstration of animation as a new bouncing ball.
  *      3. Use ShowInitProgress(percent) to display loading progress.
-*/
+ */
 
-
-namespace game_framework {
+namespace game_framework
+{
 	/////////////////////////////////////////////////////////////////////////////
 	// Constants
 	/////////////////////////////////////////////////////////////////////////////
 
-	enum AUDIO_ID {				// Define the numbering of various sound effects
-		AUDIO_DING,				// 0
-		AUDIO_LAKE,				// 1
-		AUDIO_NTUT				// 2
+	enum AUDIO_ID
+	{				// Define the numbering of various sound effects
+		AUDIO_DING, // 0
+		AUDIO_LAKE, // 1
+		AUDIO_NTUT	// 2
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
@@ -55,17 +56,18 @@ namespace game_framework {
 	// Each Member function's Implementation should be understood
 	/////////////////////////////////////////////////////////////////////////////
 
-	class CGameStateInit : public CGameState {
+	class CGameStateInit : public CGameState
+	{
 	public:
 		CGameStateInit(CGame *g);
-		void OnInit();  								// Initial values and graphics settings for the game
-		void OnBeginState();							// Set the number of variables required for each replay
-		void OnKeyUp(UINT, UINT, UINT); 				// Set the number of variables required for each replay
-		void OnLButtonDown(UINT nFlags, CPoint point);  // Handling mouse movements
+		void OnInit();								   // Initial values and graphics settings for the game
+		void OnBeginState();						   // Set the number of variables required for each replay
+		void OnKeyUp(UINT, UINT, UINT);				   // Set the number of variables required for each replay
+		void OnLButtonDown(UINT nFlags, CPoint point); // Handling mouse movements
 	protected:
-		void OnShow();									// Show this state of the game screen
+		void OnShow(); // Show this state of the game screen
 	private:
-		CMovingBitmap logo;								// csie logo
+		CMovingBitmap logo; // csie logo
 		void load_background();
 		void draw_text();
 		CMovingBitmap background;
@@ -76,30 +78,27 @@ namespace game_framework {
 	// Each Member function's implementation should be understood
 	/////////////////////////////////////////////////////////////////////////////
 
-	class CGameStateRun : public CGameState {
+	class CGameStateRun : public CGameState
+	{
 	public:
 		CGameStateRun(CGame *g);
 		~CGameStateRun();
-		void OnBeginState();							// Set the number of variables required for each replay
-		void OnInit();  								// The initial values and graphics settings of the game
+		void OnBeginState(); // Set the number of variables required for each replay
+		void OnInit();		 // The initial values and graphics settings of the game
 		void OnKeyDown(UINT, UINT, UINT);
 		void OnKeyUp(UINT, UINT, UINT);
-		void OnLButtonDown(UINT nFlags, CPoint point);  // Handling Mouse Actions
-		void OnLButtonUp(UINT nFlags, CPoint point);	// Handling Mouse Actions
-		void OnMouseMove(UINT nFlags, CPoint point);	// Handling Mouse Actions 
-		void OnRButtonDown(UINT nFlags, CPoint point);  // Handling Mouse Actions
-		void OnRButtonUp(UINT nFlags, CPoint point);	// Handling Mouse Actions
+		void OnLButtonDown(UINT nFlags, CPoint point); // Handling Mouse Actions
+		void OnLButtonUp(UINT nFlags, CPoint point);   // Handling Mouse Actions
+		void OnMouseMove(UINT nFlags, CPoint point);   // Handling Mouse Actions
+		void OnRButtonDown(UINT nFlags, CPoint point); // Handling Mouse Actions
+		void OnRButtonUp(UINT nFlags, CPoint point);   // Handling Mouse Actions
 	protected:
-		void OnMove();									// Mobile game elements
-		void OnShow();									// Show this state of the game screen
+		void OnMove(); // Mobile game elements
+		void OnShow(); // Show this state of the game screen
 		CMovingBitmap background;
 		CMovingBitmap frame;
 		CMovingBitmap character;
-<<<<<<< Updated upstream
-		CMovingBitmap bullet;
-=======
-		CMovingBitmap my_shot[500];  // my_shot_max
->>>>>>> Stashed changes
+		CMovingBitmap my_shot[500]; // my_shot_max
 		bool LeftKeyDown;
 		bool RightKeyDown;
 		bool UpKeyDown;
@@ -121,16 +120,18 @@ namespace game_framework {
 	// Each Member function's Implementation should be understood
 	/////////////////////////////////////////////////////////////////////////////
 
-	class CGameStateOver : public CGameState {
+	class CGameStateOver : public CGameState
+	{
 	public:
 		CGameStateOver(CGame *g);
-		void OnBeginState();							// Set the number of variables required for each replay
+		void OnBeginState(); // Set the number of variables required for each replay
 		void OnInit();
+
 	protected:
-		void OnMove();									// Mobile game elements
-		void OnShow();									// Show this state of the game screen
+		void OnMove(); // Mobile game elements
+		void OnShow(); // Show this state of the game screen
 	private:
-		int counter;	// Countdown counter
+		int counter; // Countdown counter
 	};
 
 }
