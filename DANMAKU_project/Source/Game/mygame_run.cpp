@@ -30,22 +30,22 @@ void CGameStateRun::OnMove()							// Mobile game elements
 	if (ShiftKeyDown == false) {
 		if (LeftKeyDown == true) {
 			if (character.GetLeft() < 371) {
-				character.SetTopLeft(character.GetLeft() + 15, character.GetTop());
+				character.SetTopLeft(character.GetLeft() + 10, character.GetTop());
 			}
 		}
 		if (RightKeyDown == true) {
 			if (10 < character.GetLeft()) {
-				character.SetTopLeft(character.GetLeft() - 15, character.GetTop());
+				character.SetTopLeft(character.GetLeft() - 10, character.GetTop());
 			}
 		}
 		if (DownKeyDown == true) {
 			if (character.GetTop() < 433) {
-				character.SetTopLeft(character.GetLeft(), character.GetTop() + 15);
+				character.SetTopLeft(character.GetLeft(), character.GetTop() + 10);
 			}
 		}
 		if (UpKeyDown == true) {
 			if (10 < character.GetTop()) {
-				character.SetTopLeft(character.GetLeft(), character.GetTop() - 15);
+				character.SetTopLeft(character.GetLeft(), character.GetTop() - 10);
 			}
 		}
 	}
@@ -77,10 +77,11 @@ void CGameStateRun::OnInit()  								// The initial values and graphics setting
 {
 	board.LoadBitmapByString({ "Resources/img/back/0/back0.bmp" });
 	board.SetTopLeft(32, 16);
+	character.LoadBitmapByString({ "Resources/img/char/0_1.bmp" }, RGB(0, 255, 0));
+	character.SetTopLeft(0, 0);
 	background.LoadBitmapByString({ "Resources/img/board/backboard.bmp"}, RGB(0, 255, 0));
 	background.SetTopLeft(0, 0);
-	character.LoadBitmapByString({ "Resources/img/char/0.bmp"}, RGB(0, 255, 0));
-	character.SetTopLeft(0, 0);
+	ShiftKeyDown = false;
 }
 
 void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -145,6 +146,6 @@ void CGameStateRun::OnRButtonUp(UINT nFlags, CPoint point)	// Handling Mouse Act
 void CGameStateRun::OnShow()
 {
 	board.ShowBitmap();
-	background.ShowBitmap();
 	character.ShowBitmap();
+	background.ShowBitmap();
 }

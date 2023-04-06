@@ -95,6 +95,7 @@ namespace game_framework {
 		CMovingBitmap background;
 		CMovingBitmap board;
 		CMovingBitmap character;
+		CMovingBitmap bullet;
 		bool LeftKeyDown;
 		bool RightKeyDown;
 		bool UpKeyDown;
