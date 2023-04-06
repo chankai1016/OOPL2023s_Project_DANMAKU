@@ -27,7 +27,7 @@ void CGameStateInit::OnInit()
 	//
 	// Start loading data
 	//
-	Sleep(1000);				// Slow down to see the progress clearly, the actual game please delete this Sleep
+	// Sleep(1000);				// Slow down to see the progress clearly, the actual game please delete this Sleep
 	//
 	// This OnInit action will receive CGameStaterRun::OnInit(), so the progress is not yet 100%.
 	//
@@ -55,3 +55,4 @@ void CGameStateInit::OnLButtonDown(UINT nFlags, CPoint point)
 void CGameStateInit::OnShow()
 {
 }
+

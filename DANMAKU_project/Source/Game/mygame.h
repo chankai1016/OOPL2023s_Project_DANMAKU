@@ -93,9 +93,13 @@ namespace game_framework {
 		void OnMove();									// Mobile game elements
 		void OnShow();									// Show this state of the game screen
 		CMovingBitmap background;
-		CMovingBitmap board;
+		CMovingBitmap frame;
 		CMovingBitmap character;
+<<<<<<< Updated upstream
 		CMovingBitmap bullet;
+=======
+		CMovingBitmap my_shot[500];  // my_shot_max
+>>>>>>> Stashed changes
 		bool LeftKeyDown;
 		bool RightKeyDown;
 		bool UpKeyDown;
@@ -105,6 +109,11 @@ namespace game_framework {
 		bool ZKeyDown;
 		bool SpaceKeyDown;
 		bool XKeyDown;
+
+		// bullet infomation
+		int my_shot_cnt;
+		int my_shot_max;
+		int my_shot_time_cnt;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
