@@ -5,6 +5,12 @@
 This is an Object-Oriented Programming Labs (OOPL) team project being held at NTUT for the Spring semester 2023.
 
 これは、2023年春学期に国立台北科技大学において開講される開催されるオブジェクト指向プログラミング実習(OOPL)のチームプロジェクトです。
+
+## Team Members
+
+- 107590059 CHAN, Jiauei (Kai)
+- 109590061 TAKAHASHI, Tomohiro
+
 ## Summary (概要)
 
 **Bullet Hell (DANMAKU)** (ja: 弾幕系シューティング / zh: 彈幕射擊遊戲)
@@ -13,7 +19,7 @@ DANMAKU is a **2D scrolling shooting game** in which the player can avoid a larg
 
 弾幕系シューティングとは、**2Dスクロールシューティングゲーム**の中で、「大量で低速な弾（弾幕）を敵が放ち、その間に生まれるわずかな隙間をぬって回避する事ができるほどプレイヤーの当たり判定が小さい」事を特徴とするシューティングゲームを指す。欧米ではBullet Hell、Bullet Curtain、Manic Shooter、DANMAKUなどと呼ばれている。
 
-## Features and Key Points (特徴とポイント)
+### Features and Key Points (特徴とポイント)
 
 First, "barrage" in shooting games refers to a state in which enemy attacks appear in such large numbers that they fill the screen, and derives from the analogy of a "curtain" with a large number of "bullets" flying around.
 
@@ -23,9 +29,64 @@ DANMAKU is a shooting game in which the player can easily avoid a large number o
 
 弾幕系シューティングは、シューティングゲームの柱となる二つの要素「撃つ」と「避ける」のうち、「避ける」の爽快感を追求するため「大量の弾（弾幕）を容易に回避できる」というシステムを盛り込んだシューティングゲームである。
 
-## Reference
+### Reference
 https://youtube.com/watch?v=cPHxL1JaFv0&feature=share
-## Team Members
 
-- 107590059 CHAN, Jiauei (Kai)
-- 109590061 TAKAHASHI, Tomohiro
+---
+
+## Project Plan & Progress (計画と進度)
+
+### 目前進度：**30%**
+
+### 計劃
+
+**粗體字**代表目前正在進行。
+
+#### 介面
+
+- [ ] 框
+  - [X] 顯示
+  - [ ] 顯示分數
+- [ ] 背景
+  - [X] 顯示
+  - [ ] **讓背景移動**
+
+#### 角色功能
+
+- [X] 顯示
+- [ ] 動畫
+  - [X] 執行動畫（4個圖片切換）
+  - [ ] **切換動畫（以方向切換3種（前/左/右））**
+- [ ] 移動
+  - [X] 長按連續
+  - [X] +`shift`鍵慢速移動
+  - [X] 移動範圍限制
+  - [ ] *其他功能...*
+- [ ] 射擊功能
+  - [X] 控制
+    - [X] 按`z`鍵發射
+    - [X] 從角色左右發射
+  - [X] 移動：向前發射
+  - [ ] 消失
+    - [ ] **彈幕到範圍外即消失**
+    - [ ] 碰到敵方即消失
+
+#### 敵方功能
+
+- [ ] **顯示**
+- [ ] 移動
+- [ ] 動畫
+  - [ ] 執行動畫
+  - [ ] 切換動畫
+- [ ] 射擊
+  - [ ] 控制
+  - [ ] 移動
+  - [ ] 消失
+    - [ ] 彈幕到範圍外即消失
+    - [ ] 碰到角色即消失
+
+#### 遊戲關卡
+
+- [ ] 第一關
+- [ ] 第二關
+- [ ] 第三關
