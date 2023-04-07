@@ -30,6 +30,7 @@ DANMAKU is a shooting game in which the player can easily avoid a large number o
 弾幕系シューティングは、シューティングゲームの柱となる二つの要素「撃つ」と「避ける」のうち、「避ける」の爽快感を追求するため「大量の弾（弾幕）を容易に回避できる」というシステムを盛り込んだシューティングゲームである。
 
 ### Reference
+
 https://youtube.com/watch?v=cPHxL1JaFv0&feature=share
 
 ---
