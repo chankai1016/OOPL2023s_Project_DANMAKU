@@ -31,7 +31,7 @@ void CGameStateRun::OnMove() // Mobile game elements
 	{
 		if (LeftKeyDown == true)
 		{
-			if (character.GetLeft() < 371)
+			if (character.GetLeft() < 363)
 			{
 				character.SetTopLeft(character.GetLeft() + 10, character.GetTop());
 			}
@@ -45,7 +45,7 @@ void CGameStateRun::OnMove() // Mobile game elements
 		}
 		if (DownKeyDown == true)
 		{
-			if (character.GetTop() < 433)
+			if (character.GetTop() < 430)
 			{
 				character.SetTopLeft(character.GetLeft(), character.GetTop() + 10);
 			}
@@ -62,7 +62,7 @@ void CGameStateRun::OnMove() // Mobile game elements
 	{
 		if (LeftKeyDown == true)
 		{
-			if (character.GetLeft() < 381)
+			if (character.GetLeft() < 363)
 			{
 				character.SetTopLeft(character.GetLeft() + 5, character.GetTop());
 			}
@@ -76,7 +76,7 @@ void CGameStateRun::OnMove() // Mobile game elements
 		}
 		if (DownKeyDown == true)
 		{
-			if (character.GetTop() < 443)
+			if (character.GetTop() < 430)
 			{
 				character.SetTopLeft(character.GetLeft(), character.GetTop() + 5);
 			}
@@ -127,18 +127,11 @@ void CGameStateRun::OnInit() // The initial values and graphics settings of the 
 	character.LoadBitmapByString({"Resources/img/char/0_1.bmp",
 								  "Resources/img/char/0_2.bmp",
 								  "Resources/img/char/0_3.bmp",
-								  "Resources/img/char/0_4.bmp",
-								  "Resources/img/char/0_5.bmp",
-								  "Resources/img/char/0_6.bmp",
-								  "Resources/img/char/0_7.bmp",
-								  "Resources/img/char/0_8.bmp",
-								  "Resources/img/char/0_9.bmp",
-								  "Resources/img/char/0_10.bmp",
-								  "Resources/img/char/0_11.bmp",
-								  "Resources/img/char/0_12.bmp"},
+								  "Resources/img/char/0_4.bmp"},
 								 RGB(0, 255, 0));
 	character.SetTopLeft(180, 350);
-	character.SetAnimation(1000, true);
+	character.SetAnimation(250, false);
+	character.ToggleAnimation();
 
 	my_shot_cnt = 0;
 	my_shot_max = 500;
