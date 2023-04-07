@@ -53,6 +53,11 @@ This is an Object-Oriented Programming Labs (OOPL) team project being held at NT
        - 移動：向前發射
 
 2. 目前正在進行哪一個工作點？
+   
+   目前射擊後的彈幕尚未處理（彈幕到範圍外即消失 或 碰到敵方即消失），且彈幕上限暫設爲`500`，爲減少電腦負擔，之後可能需實現「當彈幕`my_shot[n]`設爲消失狀態後，該`my_shot[n]`重新利用」。
+   
+    其他：
+
    - 介面
      - 初始畫面
      - 選單
