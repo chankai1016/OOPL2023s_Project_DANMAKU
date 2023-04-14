@@ -50,9 +50,9 @@ This is an Object-Oriented Programming Labs (OOPL) team project being held at NT
 - [ ] 框
   - [X] 顯示
   - [ ] 顯示分數
-- [ ] 背景
+- [X] 背景
   - [X] 顯示
-  - [ ] **讓背景移動**
+  - [X] 讓背景移動
 
 #### 角色功能
 

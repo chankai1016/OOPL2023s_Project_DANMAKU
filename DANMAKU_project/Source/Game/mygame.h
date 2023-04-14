@@ -95,10 +95,23 @@ namespace game_framework
 	protected:
 		void OnMove(); // Mobile game elements
 		void OnShow(); // Show this state of the game screen
-		CMovingBitmap background;
+		//void show_text_by_phase();
+		CMovingBitmap background[2];
 		CMovingBitmap frame;
 		CMovingBitmap character;
-		CMovingBitmap my_shot[500]; // my_shot_max
+		CMovingBitmap my_shot[1000]; // my_shot_max
+		// bullet infomation
+		int my_shot_cnt;
+		int my_shot_max;
+		int my_shot_time_cnt;
+		CMovingBitmap enemy[250];
+		int enemy_max;
+		CMovingBitmap enemy_shot[250][1000];
+		int enemy_shot_cnt;
+		int enemy_shot_max;
+		int enemy_shot_time_cnt;
+		CMovingBitmap boss[10];
+		CMovingBitmap boss_shot[10][1000];
 		bool LeftKeyDown;
 		bool RightKeyDown;
 		bool UpKeyDown;
@@ -109,10 +122,7 @@ namespace game_framework
 		bool SpaceKeyDown;
 		bool XKeyDown;
 
-		// bullet infomation
-		int my_shot_cnt;
-		int my_shot_max;
-		int my_shot_time_cnt;
+
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
